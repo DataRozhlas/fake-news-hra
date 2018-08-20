@@ -1,0 +1,22 @@
+{
+  "name": "fake-news-hra",
+  "version": "1.0.0",
+  "description": "Fake news hra v Reactu.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataRozhlas/fake-news-hra.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DataRozhlas/fake-news-hra/issues"
+  },
+  "homepage": "https://github.com/DataRozhlas/fake-news-hra#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.24.1"
+  }
+}
