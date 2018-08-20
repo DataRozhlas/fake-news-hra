@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/DataRozhlas/fake-news-hra#readme",
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1"
-  }
+  },
+  "devDependencies": {}
 }
