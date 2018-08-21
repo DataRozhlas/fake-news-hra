@@ -5,7 +5,7 @@ function Score(props) {
         {props.score}
         </div>
         <div className="score-text">
-        Skóre
+        Sledujících
         </div>
       </div>
     )
@@ -24,9 +24,17 @@ function TrustScore(props) {
     )
 }
 
-function StepText(props) {
+function GameMessage(props) {
     return (
-      <div className="gametext">
+      <div className="game-message">
+      {props.text}
+      </div>
+    )
+}
+
+function SocialPost(props) {
+    return (
+      <div className="social-post">
       {props.text}
       </div>
     )
@@ -63,6 +71,16 @@ class Game extends React.Component {
     })
   }
 
+  renderStep(step) {
+    if (step.type === "gameMessage") {
+      return <GameMessage text={step.text} />
+    } else if (step.type === "socialPost") {
+      return <SocialPost text={step.text} />
+    } else {
+      return "undefined type!"
+    }
+  }
+
   render() {
     const step = gameData[this.state.step];
     const choices = step.choices.map((choice) => {
@@ -83,7 +101,7 @@ class Game extends React.Component {
             <Score score={this.state.score} />
             <TrustScore trust={this.state.trust} />
           </div>
-          <StepText text={step.text} />
+          {this.renderStep(step)}
           <div className="choice-buttons">
           {choices}
           </div>

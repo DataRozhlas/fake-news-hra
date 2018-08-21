@@ -20,7 +20,7 @@ function Score(props) {
     React.createElement(
       "div",
       { className: "score-text" },
-      "Sk\xF3re"
+      "Sleduj\xEDc\xEDch"
     )
   );
 }
@@ -43,10 +43,18 @@ function TrustScore(props) {
   );
 }
 
-function StepText(props) {
+function GameMessage(props) {
   return React.createElement(
     "div",
-    { className: "gametext" },
+    { className: "game-message" },
+    props.text
+  );
+}
+
+function SocialPost(props) {
+  return React.createElement(
+    "div",
+    { className: "social-post" },
     props.text
   );
 }
@@ -90,6 +98,17 @@ var Game = function (_React$Component) {
       });
     }
   }, {
+    key: "renderStep",
+    value: function renderStep(step) {
+      if (step.type === "gameMessage") {
+        return React.createElement(GameMessage, { text: step.text });
+      } else if (step.type === "socialPost") {
+        return React.createElement(SocialPost, { text: step.text });
+      } else {
+        return "undefined type!";
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -120,7 +139,7 @@ var Game = function (_React$Component) {
             React.createElement(Score, { score: this.state.score }),
             React.createElement(TrustScore, { trust: this.state.trust })
           ),
-          React.createElement(StepText, { text: step.text }),
+          this.renderStep(step),
           React.createElement(
             "div",
             { className: "choice-buttons" },
