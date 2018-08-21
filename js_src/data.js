@@ -83,15 +83,56 @@ const gameData = {
   }, 
 
   question1_choice1: {
-    text: "Co napíšete? Možností je několik.",
+    text: "Zhnusení a prohnilost neziskovek, udělá se vám zle. Důchodci třou bídu. Stát je nechal ostudně na okraji zájmu. Kšeft s chudobou a nelidské exekuce!",
     type: "socialPost",
     choices: [
       {
-        text: "Fajn!",
-        nextStep: "question1",
+        text: "Neziskovky mě nezajímají.",
+        nextStep: "question1_choice2"
+      }, {
+        text: "Sdílím!",
+        nextStep: "question1_after",
         scoreChange: 100,
         trustChange: -10
       }
     ]
+  },
+
+  question1_choice2: {
+    text: "Česká televize prokazatelně manipuluje s diváky. Její kodex je k ničemu, dodává bývalý zpravodajský důstojník",
+    type: "socialPost",
+    choices: [
+      {
+        text: "ČT je mi ukradená.",
+        nextStep: "question1_choice3"
+      }, {
+        text: "Sdílím!",
+        nextStep: "question1_after",
+        scoreChange: 100,
+        trustChange: -10
+      }
+    ]
+  },
+
+  question1_choice3: {
+    text: "Zemědělci na besedě prozradili vše: Dva roky staré belgické máslo na českém trhu. V zájmu EU není, abychom vyráběli mléko. Měli jsme 1,3 milionu krav a dnes...",
+    type: "socialPost",
+    choices: [
+      {
+        text: "EU? Nuda...",
+        nextStep: "question1_choice1"
+      }, {
+        text: "Sdílím!",
+        nextStep: "question1_after",
+        scoreChange: 100,
+        trustChange: -10
+      }
+    ]
+  },
+
+  question1_after: {
+    text: "Tady to zatím končí.",
+    type: "gameMessage",
+    choices: []
   }
 }

@@ -55,7 +55,17 @@ function SocialPost(props) {
   return React.createElement(
     "div",
     { className: "social-post" },
-    props.text
+    React.createElement("img", { src: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png", className: "social-post-img" }),
+    React.createElement(
+      "div",
+      { className: "social-post-username" },
+      "Na\u0161tvan\xFD ob\u010Dan"
+    ),
+    React.createElement(
+      "div",
+      { className: "social-post-text" },
+      props.text
+    )
   );
 }
 

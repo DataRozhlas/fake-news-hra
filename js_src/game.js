@@ -35,7 +35,9 @@ function GameMessage(props) {
 function SocialPost(props) {
     return (
       <div className="social-post">
-      {props.text}
+        <img src="http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png" className="social-post-img" />
+        <div className="social-post-username">Naštvaný občan</div>
+        <div className="social-post-text">{props.text}</div>
       </div>
     )
 }

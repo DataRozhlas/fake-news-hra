@@ -14,6 +14,15 @@
 
 .social-post {
   background: lightblue; 
+  color: black;
+}
+
+.social-post-img {
+  width: 60px;
+}
+
+.social-post-username {
+  font-size: small;
 }
 
 .choice-buttons {
