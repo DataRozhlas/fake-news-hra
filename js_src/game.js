@@ -1,62 +1,32 @@
-const gameData = {
-  start: {
-    text: "Toto je začátek hry.",
-    choices: [
-      {
-        text: "Začneme!",
-        nextStep: "question1"
-      },
-      {
-        text: "Končíme!",
-        nextStep: "question2"
-     }
-    ]
-  },
-
-  question1: {
-    text: "Kliknuli jste na otázku 1.",
-    choices: [
-      {
-        text: "Zpět na začátek!",
-        nextStep: "start",
-        scoreChange: -10,
-        trustChange: 20
-      }
-    ]
-  },
-
-  question2: {
-    text: "Kliknuli jste na otázku 2.",
-    choices: [
-      {
-        text: "Zpět na začátek!",
-        nextStep: "start",
-        scoreChange: 20,
-        trustChange: -10
-      }
-    ]
-  }, 
-}
-
 function Score(props) {
   return (
-      <div className="scoreDisplay">
-      SKÓRE: {props.score}
+      <div className="score-meter">
+        <div className="score-number">
+        {props.score}
+        </div>
+        <div className="score-text">
+        Skóre
+        </div>
       </div>
     )
 }
 
 function TrustScore(props) {
   return (
-      <div className="trustDisplay">
-      DŮVĚRA: {props.trust} %
+    <div className="trust-meter">
+      <div className="trust-number">
+      {props.trust} %
       </div>
+      <div className="trust-text">
+      Důvěra
+      </div>
+    </div>
     )
 }
 
 function StepText(props) {
     return (
-      <div className="gameInfo">
+      <div className="gametext">
       {props.text}
       </div>
     )
@@ -64,7 +34,7 @@ function StepText(props) {
 
 function ChoiceButton(props) {
   return (
-      <button onClick={props.onClick}>
+      <button className="choice-button" onClick={props.onClick}>
       {props.text}
       </button>
     )
@@ -75,7 +45,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       score: 0,
-      trust: 33,
+      trust: 50,
       step: "start",
       history: []
     };
@@ -107,12 +77,19 @@ class Game extends React.Component {
     });
 
     return (
-      <div className="gameview">
-        <Score score={this.state.score} />
-        <TrustScore trust={this.state.trust} />
-        <StepText text={step.text} />
-        {choices}
+      <div>
+        <div className="gameview">
+          <div className="meters">
+            <Score score={this.state.score} />
+            <TrustScore trust={this.state.trust} />
+          </div>
+          <StepText text={step.text} />
+          <div className="choice-buttons">
+          {choices}
+          </div>
+        </div>
         <div className="history">
+        Záznam hry:
         <ul>{history}</ul>
         </div>
       </div>

@@ -1,0 +1,46 @@
+.gameview {
+  width: 100%;
+  background: black;
+  padding: 20px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.gametext {
+  font-size: 2rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.choice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.choice-button {
+  background-color: #555555;
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 2rem;
+  padding: 15px 32px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.meters {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-meter, .trust-meter {
+  color: white;
+  text-align: center;
+}
+
+.score-number, .trust-number {
+  font-weight: bold;
+  font-size: 2rem;
+}

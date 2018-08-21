@@ -8,62 +8,45 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var gameData = {
-  start: {
-    text: "Toto je začátek hry.",
-    choices: [{
-      text: "Začneme!",
-      nextStep: "question1"
-    }, {
-      text: "Končíme!",
-      nextStep: "question2"
-    }]
-  },
-
-  question1: {
-    text: "Kliknuli jste na otázku 1.",
-    choices: [{
-      text: "Zpět na začátek!",
-      nextStep: "start",
-      scoreChange: -10,
-      trustChange: 20
-    }]
-  },
-
-  question2: {
-    text: "Kliknuli jste na otázku 2.",
-    choices: [{
-      text: "Zpět na začátek!",
-      nextStep: "start",
-      scoreChange: 20,
-      trustChange: -10
-    }]
-  }
-};
-
 function Score(props) {
   return React.createElement(
     "div",
-    { className: "scoreDisplay" },
-    "SK\xD3RE: ",
-    props.score
+    { className: "score-meter" },
+    React.createElement(
+      "div",
+      { className: "score-number" },
+      props.score
+    ),
+    React.createElement(
+      "div",
+      { className: "score-text" },
+      "Sk\xF3re"
+    )
   );
 }
 
 function TrustScore(props) {
   return React.createElement(
     "div",
-    { className: "trustDisplay" },
-    "D\u016EV\u011ARA: ",
-    props.trust,
-    " %"
+    { className: "trust-meter" },
+    React.createElement(
+      "div",
+      { className: "trust-number" },
+      props.trust,
+      " %"
+    ),
+    React.createElement(
+      "div",
+      { className: "trust-text" },
+      "D\u016Fv\u011Bra"
+    )
   );
 }
 
 function StepText(props) {
   return React.createElement(
     "div",
-    { className: "gameInfo" },
+    { className: "gametext" },
     props.text
   );
 }
@@ -71,7 +54,7 @@ function StepText(props) {
 function ChoiceButton(props) {
   return React.createElement(
     "button",
-    { onClick: props.onClick },
+    { className: "choice-button", onClick: props.onClick },
     props.text
   );
 }
@@ -86,7 +69,7 @@ var Game = function (_React$Component) {
 
     _this.state = {
       score: 0,
-      trust: 33,
+      trust: 50,
       step: "start",
       history: []
     };
@@ -127,14 +110,27 @@ var Game = function (_React$Component) {
 
       return React.createElement(
         "div",
-        { className: "gameview" },
-        React.createElement(Score, { score: this.state.score }),
-        React.createElement(TrustScore, { trust: this.state.trust }),
-        React.createElement(StepText, { text: step.text }),
-        choices,
+        null,
+        React.createElement(
+          "div",
+          { className: "gameview" },
+          React.createElement(
+            "div",
+            { className: "meters" },
+            React.createElement(Score, { score: this.state.score }),
+            React.createElement(TrustScore, { trust: this.state.trust })
+          ),
+          React.createElement(StepText, { text: step.text }),
+          React.createElement(
+            "div",
+            { className: "choice-buttons" },
+            choices
+          )
+        ),
         React.createElement(
           "div",
           { className: "history" },
+          "Z\xE1znam hry:",
           React.createElement(
             "ul",
             null,
