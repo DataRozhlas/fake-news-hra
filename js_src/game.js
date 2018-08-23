@@ -78,8 +78,8 @@ class Game extends React.Component {
       return <GameMessage text={step.text} />
     } else if (step.type === "socialPost") {
       return <SocialPost text={step.text} />
-    } else {
-      return "undefined type!"
+    } else { // 
+      return <GameMessage text={step.text} />
     }
   }
 

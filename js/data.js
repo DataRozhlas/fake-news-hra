@@ -1,6 +1,7 @@
 "use strict";
 
-// types: gameMessage, socialPost
+// types: gameMessage, socialPost, postReakce, webName, gameBadge, webPost
+
 var gameData = {
   start: {
     text: "Rád vás poznávám.",
@@ -111,8 +112,292 @@ var gameData = {
   },
 
   question1_after: {
-    text: "Tady to zatím končí.",
+    text: "Naprostý souhlas! Konečně někdo sdílí pravdu!",
+    name: "Pepa",
+    type: "postReakce",
+    choices: [{
+      text: "Díky",
+      nextStep: "question1_after2"
+    }]
+  },
+
+  question1_after2: {
+    text: "A prolhaná média mlčí.. díky za info! ",
+    name: "Julie",
+    type: "postReakce",
+    choices: [{
+      text: "Rádo se stalo",
+      nextStep: "feedback"
+    }]
+  },
+
+  feedback: {
+    text: "Gratuluji! Váš smyšlený status zmátl několik přátel. Jak se cítíte? ",
     type: "gameMessage",
-    choices: []
+    choices: [{
+      text: "Skvěle!",
+      nextStep: "goPro"
+    }, {
+      text: "Tohle není správné..",
+      nextStep: "feedback_unsure"
+    }]
+  },
+
+  feedback_unsure: {
+    text: "Ale! Trošku překroutit realitu přece není nezákonné. Navíc je to zábava, uvidíte!",
+    type: "gameMessage",
+    choices: [{
+      text: "Tak dobře",
+      nextStep: "goPro"
+    }, {
+      text: "Když já nevím..",
+      nextStep: "theend"
+    }]
+  },
+
+  theend: {
+    text: "Konec hry. Pokud máte ambice stát se pořádným dezinformátorem morálku musíte odložit stranou!",
+    type: "gameMessage",
+    choices: [{
+      text: "Zkusit to znovu",
+      nextStep: "start"
+    }]
+  },
+
+  goPro: {
+    text: "Tak to být! Je na čase rozjet to ve velkém!",
+    type: "gameMessage",
+    choices: [{
+      text: "Založit dezinformační web",
+      nextStep: "startWeb"
+    }]
+  },
+
+  startWeb: {
+    text: "Důležitý je název a správný slogan.",
+    type: "gameMessage",
+    choices: [{
+      text: "Rozumím! Vybrat název mého webu.",
+      nextStep: "startWeb_choice1"
+    }]
+  },
+
+  startWeb_choice1: {
+    text: "Protistádo",
+    slogan: "O čem mainstreamová média mlčí!",
+    type: "webName",
+    choices: [{
+      text: "Eh, dál",
+      nextStep: "startWeb_choice2"
+    }, {
+      text: "Beru!",
+      nextStep: "startWeb_done"
+    }]
+  },
+
+  startWeb_choice2: {
+    text: "Nezávislé zprávy",
+    slogan: "Bez cenzury!",
+    type: "webName",
+    choices: [{
+      text: "Ne",
+      nextStep: "startWeb_choice3"
+    }, {
+      text: "Skvělé",
+      nextStep: "startWeb_done"
+    }]
+  },
+
+  startWeb_choice3: {
+    text: "Český Maják",
+    slogan: "Nejaktuálnější zprávy bez politické korektnosti.",
+    type: "webName",
+    choices: [{
+      text: "Zpátky na začátek",
+      nextStep: "startWeb_choice1"
+    }, {
+      text: "To je ono!",
+      nextStep: "startWeb_done"
+    }]
+  },
+
+  startWeb_done: {
+    text: "Správná volba. Pod jakým pseudonymem budete články publikovat, šéfredaktore?",
+    type: "gameMessage",
+    choices: [{
+      text: "Vedoucí cirkusu",
+      nextStep: "badge_impersonation"
+    }, {
+      text: "Pravdomluvka",
+      nextStep: "badge_impersonation"
+    }, {
+      text: "Pseudonym? Pod vlastním jménem!",
+      nextStep: "startWeb_doneExplain"
+    }]
+  },
+
+  startWeb_doneExplain: {
+    text: "Většina dezinformačních webů publikuje články anonymně. Zkuste to ještě jednou.",
+    type: "gameMessage",
+    choices: [{
+      text: "Ok",
+      nextStep: "startWeb_done"
+    }]
+  },
+
+  badge_impersonation: {
+    text: "Gratuluji! Z běžného uživatele Facebooku jste se stal šéfredaktrem zpravodajského webu!",
+    type: "gameBadge",
+    choices: [{
+      text: "pulikovat první článek",
+      nextStep: "createcontent"
+    }]
+  },
+
+  createcontent: {
+    text: "Jaký bude obsah vašeho webu?",
+    type: "gameMessage",
+    choices: [{
+      text: "emotivní",
+      nextStep: "createcontent_emotion"
+    }, {
+      text: "seriozní",
+      nextStep: "createcontent_serious"
+    }]
+  },
+
+  createcontent_emotion: {
+    text: "Správně! Emoce mohou pomoct zprávy šířit mezi lidmi. Co dál?",
+    type: "gameMessage",
+    choices: [{
+      text: "Podívat se o čem píši zpravodajské weby a napadnout jejich zprávy",
+      nextStep: "newsheadlines"
+    }, {
+      text: "vymyslím si vlastní konspiraci.",
+      nextStep: "conspiracy"
+    }]
+  },
+
+  createcontent_serious: {
+    text: "Neblázněte! Vždyť chcete dosáhnout role deziformátora! Co dál?",
+    type: "gameMessage",
+    choices: [{
+      text: "dobře, chci si hrát s lidskými emocemi",
+      nextStep: "createcontent_emotion"
+    }, {
+      text: "vymyslím si vlastní konspiraci",
+      nextStep: "conspiracy"
+    }]
+  },
+
+  newsheadlines: {
+    text: "Bývalého ruského agenta Sergeje Skripala propustili z nemocnice, kde se ocitl, když byl vystaven nervově paralytické látce Novičok",
+    type: "webPost",
+    choices: [{
+      text: "to je ono!",
+      nextStep: "newsheadlines_novicok"
+    }, {
+      text: "Novičok je nuda, dál!",
+      nextStep: "newsheadlines_2"
+    }]
+  },
+
+  newsheadlines_2: {
+    text: "Nová hymna stála 600 tisíc korun. 'Velkou částí jsem přispěl sám,' řekl předseda Českého olympijského výboru",
+    type: "webPost",
+    choices: [{
+      text: "překroutit zprávu",
+      nextStep: "newsheadlines_hymna"
+    }, {
+      text: "Hmm, zpátky na Skripala",
+      nextStep: "newsheadlines"
+    }]
+  },
+
+  newsheadlines_novicok: {
+    text: "Velikonoční zázrak: Otrávená dcera Skripala ožila. Snědl britský agent novičok, nebo artyčok? Britové obelhali celý svět už jednou s Irákem!",
+    type: "webPost",
+    choices: [{
+      text: "pulikovat",
+      nextStep: "newsheadlines_reactions"
+    }]
+  },
+
+  newsheadlines_hymna: {
+    text: "Nová verze české hymny je útokem na Českou republiku a její státnost. Kakofonie disharmonických zvuků má zakódované audiotomy bratří Cohenů, které vyzývají posluchače k sebevraždě. Český olympijský výbor zkouší na českém národu pokus se satanskými symboly, jaké jsme viděli při otevírání Gotthardského tunelu! Tuto skladbu si nepouštějte ani do sluchátek a už vůbec ne před malými dětmi!",
+    type: "webPost",
+    choices: [{
+      text: "publikovat",
+      nextStep: "newsheadlines_reactions_hymna"
+    }]
+  },
+
+  conspiracy: {
+    text: "Nová verze české hymny je útokem na Českou republiku a její státnost. Kakofonie disharmonických zvuků má zakódované audiotomy bratří Cohenů, které vyzývají posluchače k sebevraždě. Český olympijský výbor zkouší na českém národu pokus se satanskými symboly, jaké jsme viděli při otevírání Gotthardského tunelu! Tuto skladbu si nepouštějte ani do sluchátek a už vůbec ne před malými dětmi!",
+    type: "gameMessage",
+    choices: [{
+      text: "publikovat!!",
+      nextStep: "newsheadlines_reactions_hymna"
+    }]
+  },
+
+  newsheadlines_reactions: {
+    text: "Naprostý souhlas! Konečně někdo sdílí pravdu!",
+    name: "Majda",
+    type: "postReakce",
+    choices: [{
+      text: "více!",
+      nextStep: "newsheadlines_reactions_2"
+    }]
+  },
+
+  newsheadlines_reactions_2: {
+    text: "Hrůza! Proč nám o tom média mlčí???",
+    name: "Honza",
+    type: "postReakce",
+    choices: [{
+      text: "ano!",
+      nextStep: "nextstep"
+    }]
+  },
+
+  newsheadlines_reactions_hymna: {
+    text: "Co je to za blbost? Tomuhle máme věřit?",
+    name: "Majda",
+    type: "postReakce",
+    choices: [{
+      text: "a sakra!",
+      nextStep: "newsheadlines_reactions_hymna2"
+    }]
+  },
+
+  newsheadlines_reactions_hymna2: {
+    text: "Děláte z nás blázny! Taková blbost",
+    name: "Honza",
+    type: "postReakce",
+    choices: [{
+      text: "co teď?",
+      nextStep: "nextstepfail"
+    }]
+  },
+
+  nextstep: {
+    text: "tady to končí",
+    name: "Honza",
+    type: "postReakce",
+    choices: [{
+      text: "co teď?",
+      nextStep: "nextstepfail"
+    }]
+  },
+
+  nextstepfail: {
+    text: "tady to končí",
+    name: "Honza",
+    type: "postReakce",
+    choices: [{
+      text: "co teď?",
+      nextStep: "nextstepfail"
+    }]
   }
 };

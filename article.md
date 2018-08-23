@@ -1,4 +1,4 @@
-title: "Vydali zprávu se skandálním titulkem. Neuvěříte, co se stalo pak"
+title: "Vydali zprávu se skandálnbím titulkem. Neuvěříte, co se stalo pak"
 perex: "Tady bude zábavná zpravodajská hra"
 published: "29. srpna 2018"
 coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
