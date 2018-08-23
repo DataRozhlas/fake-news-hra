@@ -9,3 +9,5 @@ libraries: ["https://unpkg.com/react@16/umd/react.production.min.js","https://un
 options: [noheader, nopic] #wide, noheader (, nopic)
 ---
 <div id="game"></div>
+
+<!-- npx babel --watch js_src --out-dir js --presets env,react -->

@@ -78,7 +78,7 @@ class Game extends React.Component {
       return <GameMessage text={step.text} />
     } else if (step.type === "socialPost") {
       return <SocialPost text={step.text} />
-    } else { // 
+    } else { // fix
       return <GameMessage text={step.text} />
     }
   }

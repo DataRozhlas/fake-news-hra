@@ -115,7 +115,7 @@ var Game = function (_React$Component) {
       } else if (step.type === "socialPost") {
         return React.createElement(SocialPost, { text: step.text });
       } else {
-        // 
+        // fix
         return React.createElement(GameMessage, { text: step.text });
       }
     }

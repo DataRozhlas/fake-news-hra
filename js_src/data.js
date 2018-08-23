@@ -1,7 +1,5 @@
-"use strict";
-
 // types: gameMessage, socialPost, postReakce, webName, gameBadge, webPost
-var gameData = {
+const gameData = {
   start: {
     text: "Rád vás poznávám.",
     type: "gameMessage",
@@ -155,19 +153,19 @@ var gameData = {
   },
 
     theend: {
-      text: "Konec hry. Pokud máte ambice stát se pořádným dezinformátorem morálku musíte odložit stranou!",
+      text: "Pokud máte ambice stát se pořádným dezinformátorem morálku musíte odložit stranou!",
       type: "gameMessage",
       choices: [{
-        text: "Zkusit to znovu",
-        nextStep: "start",
+        text: "no tak dobře..",
+        nextStep: "goPro",
       }] 
    }, 
 
    goPro: {
-    text: "Tak to být! Je na čase rozjet to ve velkém!",
+    text: "Tak to má být! Je na čase rozjet to ve velkém! Co takhle založit vlastní dezinformační web?",
     type: "gameMessage",
     choices: [{
-      text: "Založit dezinformační web",
+      text: "souhlas",
       nextStep: "startWeb",
     }] 
   },
@@ -236,7 +234,7 @@ var gameData = {
   },
 
   startWeb_doneExplain: {
-    text: "Většina dezinformačních webů publikuje články anonymně. Zkuste to ještě jednou.",
+    text: "Na většině dezinformačních webů vycházejí články anonymně",
     type: "gameMessage",
     choices: [{
       text: "Ok",
@@ -245,10 +243,19 @@ var gameData = {
   },
 
   badge_impersonation: {
-    text: "Gratuluji! Z běžného uživatele Facebooku jste se stal šéfredaktrem zpravodajského webu!",
+    text: "Gratuluji! Z běžného uživatele Facebooku jste se stal šéfredaktorem dezinformačního webu!",
     type: "gameBadge",
     choices: [{
-      text: "pulikovat první článek",
+      text: "Díky!",
+      nextStep: "createcontent_explain",
+    }]
+  },
+
+  createcontent_explain: {
+    text: "Způsobů jak vytvořit dezinformace je hned několik. Zkuste publikovat první článek.",
+    type: "gameMessage",
+    choices: [{
+      text: "napsat článek",
       nextStep: "createcontent",
     }]
   },
@@ -269,23 +276,20 @@ var gameData = {
     text: "Správně! Emoce mohou pomoct zprávy šířit mezi lidmi. Co dál?",
     type: "gameMessage",
     choices: [{
-      text: "Podívat se o čem píši zpravodajské weby a napadnout jejich zprávy",
+      text: "podívám se o čem píši zpravodajské weby a napadnu jejich zprávy",
       nextStep: "newsheadlines",
     },{
-      text: "vymyslím si vlastní konspiraci.",
+      text: "vymyslím si vlastní konspiraci",
       nextStep: "conspiracy",
     }]
   },
 
   createcontent_serious: {
-    text: "Neblázněte! Vždyť chcete dosáhnout role deziformátora! Co dál?",
+    text: "Neblázněte! Vždyť chcete dosáhnout role deziformátora!",
     type: "gameMessage",
     choices: [{
       text: "dobře, chci si hrát s lidskými emocemi",
       nextStep: "createcontent_emotion",
-    },{
-      text: "vymyslím si vlastní konspiraci",
-      nextStep: "conspiracy",
     }]
   },
 
@@ -293,7 +297,7 @@ var gameData = {
     text: "Bývalého ruského agenta Sergeje Skripala propustili z nemocnice, kde se ocitl, když byl vystaven nervově paralytické látce Novičok",
     type: "webPost",
     choices: [{
-      text: "to je ono!",
+      text: "o tomhle napíšu, že Britové lhali!",
       nextStep: "newsheadlines_novicok",
     },{
       text: "Novičok je nuda, dál!",
@@ -308,7 +312,7 @@ var gameData = {
       text: "překroutit zprávu",
       nextStep: "newsheadlines_hymna",
     },{
-      text: "Hmm, zpátky na Skripala",
+      text: "hmm, zpátky na Skripala",
       nextStep: "newsheadlines",
     }]
   },
@@ -356,7 +360,7 @@ var gameData = {
     type: "postReakce",
     choices: [{
       text: "ano!",
-      nextStep: "nextstep",
+      nextStep: "badge_emotion",
     }]
   },
   
@@ -380,23 +384,138 @@ var gameData = {
     }]
   },
 
-  nextstep: {
-    text: "tady to končí",
-    name: "Honza", 
-    type: "postReakce",
+  badge_emotion: {
+    text: "Gratuluji! Podařilo se vám využít lidské emoce k šíření dezinformací!",
+    type: "gameBadge",
     choices: [{
-      text: "co teď?",
-      nextStep: "nextstepfail",
+      text: "chci pokračovat",
+      nextStep: "search_fb",
     }]
   },
 
   nextstepfail: {
-    text: "tady to končí",
-    name: "Honza", 
-    type: "postReakce",
+    text: "Uff, na tohle vám neskočili. Ale ještě není pozdě váš web zachránit.",
+    type: "gameMessage",
     choices: [{
-      text: "co teď?",
-      nextStep: "nextstepfail",
+      text: "polepším se!",
+      nextStep: "search_fb",
     }]
   },
+
+  search_fb: {
+    text: "Co takhle kouknout do diskuzí na Facebooku a najít téma, které lidi zajímá",
+    type: "gameMessage",
+    choices: [{
+      text: "jdu na to!",
+      nextStep: "tipsandtricks",
+    }]
+},
+
+  searchfb_post1: {
+    text: "Desetiletý chlapec snědl ananas a onemocněl. Když lékaři provedli zdravotní kontrolu zjistili, že má AIDS.",
+    type: "socialPost",
+    choices: [{
+      text: "dál",
+      nextStep: "searchfb_post2",
+    },{
+        text: "o tomhle napíšu!",
+        nextStep: "post1_publish",
+    }]
+},
+
+searchfb_post2: {
+    text: "Dneska po obědě jsem viděl na hlavním nádraží v Praze 1500 migrantů a MÉDIA MLČÍ!!!",
+    type: "socialPost",
+    choices: [{
+      text: "tohle ne",
+      nextStep: "searchfb_post3"
+    }, {
+      text: "tohle ano",
+      nextStep: "post2_publish",
+    }]
+  },
+
+  searchfb_post3: {
+    text: "Jsem na dovolené ve Francii a na obloze jsou podivné mraky, kousek od nás je jaderná elektrárna. Nevíte o tom něco?",
+    type: "socialPost",
+    choices: [{
+      text: "zpátky k ananasu",
+      nextStep: "searchfb_post1"
+    }, {
+      text: "tohle je to pravé",
+      nextStep: "post3_publish",
+    }]
+  },
+
+  tipsandtricks: {
+    text: "Jen pár rad předtím, než článek napíšete",
+    type: "gameMessage",
+    choices: [{
+      text: "sem s nimi!",
+      nextStep: "titulek",
+    }]
+  },
+
+  titulek: {
+    text: "Exkluzivní! Šokující! VELKÁ PÍSMENA !!!! Nejdůležitější je u článku titulek. Mnohol lidí přečtě pouze ten.",
+    type: "gameMessage",
+    choices: [{
+      text: "CO DÁL?",
+      nextStep: "foto",
+    }]
+  },
+
+  foto: {
+    text: "---- FOTOMONTÁŽ",
+    type: "gameMessage",
+    choices: [{
+      text: "přece si to celé nemůžu vymyslet..",
+      nextStep: "zdroj",
+    }]
+  },
+
+    zdroj: {
+        text: "Právě naopak. --- zahraniční dezinformační weby nebo pochybné studie",
+        type: "gameMessage",
+        choices: [{
+          text: "jsem připraven zkusit si to na tématu z diskuze na facebooku!",
+          nextStep: "searchfb_post1",
+        }]       
+  },
+
+  post1_publish: {
+    text: "tady to končí",
+    type: "webPost",
+    choices: [{
+      text: "o tomhle napíšu, že Britové lhali!",
+      nextStep: "newsheadlines_novicok",
+    },{
+      text: "Novičok je nuda, dál!",
+      nextStep: "newsheadlines_2",
+    }]
+  },
+
+  post2_publish: {
+    text: "tady to končí",
+    type: "webPost",
+    choices: [{
+      text: "o tomhle napíšu, že Britové lhali!",
+      nextStep: "newsheadlines_novicok",
+    },{
+      text: "Novičok je nuda, dál!",
+      nextStep: "newsheadlines_2",
+    }]
+  },
+
+  post3_publish: {
+    text: "tady to končí",
+    type: "webPost",
+    choices: [{
+      text: "o tomhle napíšu, že Britové lhali!",
+      nextStep: "newsheadlines_novicok",
+    },{
+      text: "Novičok je nuda, dál!",
+      nextStep: "newsheadlines_2",
+    }]
+  }, 
 }
