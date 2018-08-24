@@ -1,7 +1,11 @@
 "use strict";
 
+var _gameData;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 // types: gameMessage, socialPost, postReakce, webName, gameBadge, webPost
-var gameData = {
+var gameData = (_gameData = {
   start: {
     text: "Rád vás poznávám.",
     type: "gameMessage",
@@ -413,6 +417,51 @@ var gameData = {
     }]
   },
 
+  tipsandtricks: {
+    text: "Jen pár rad předtím, než článek napíšete",
+    type: "gameMessage",
+    choices: [{
+      text: "sem s nimi!",
+      nextStep: "titulek"
+    }]
+  },
+
+  titulek: {
+    text: "Exkluzivní! Šokující! VELKÁ PÍSMENA !!!! Nejdůležitější je u článku titulek. Mnohol lidí více nepřečte",
+    type: "gameMessage",
+    choices: [{
+      text: "CO DÁL?!!!",
+      nextStep: "foto"
+    }]
+  },
+
+  foto: {
+    text: "---- FOTOMONTÁŽ",
+    type: "gameMessage",
+    choices: [{
+      text: "přece si to celé nemůžu vymyslet..",
+      nextStep: "zdroj"
+    }]
+  },
+
+  zdroj: {
+    text: "Právě naopak. --- zahraniční dezinformační weby nebo pochybné studie. Ještě jedna důležitá věc než vás na to pustím, mistře",
+    type: "gameMessage",
+    choices: [{
+      text: "rychle!",
+      nextStep: "nalepkovani"
+    }]
+  },
+
+  nalepkovani: {
+    text: "sluníčkáři, Pražská kavárna, presstituky, Soros! Nebojte se nálepkování",
+    type: "gameMessage",
+    choices: [{
+      text: "jsem připraven zkusit si to na tématu z diskuze na facebooku!",
+      nextStep: "searchfb_post1"
+    }]
+  },
+
   searchfb_post1: {
     text: "Desetiletý chlapec snědl ananas a onemocněl. Když lékaři provedli zdravotní kontrolu zjistili, že má AIDS.",
     type: "socialPost",
@@ -449,75 +498,106 @@ var gameData = {
     }]
   },
 
-  tipsandtricks: {
-    text: "Jen pár rad předtím, než článek napíšete",
-    type: "gameMessage",
-    choices: [{
-      text: "sem s nimi!",
-      nextStep: "titulek"
-    }]
-  },
-
-  titulek: {
-    text: "Exkluzivní! Šokující! VELKÁ PÍSMENA !!!! Nejdůležitější je u článku titulek. Mnohol lidí přečtě pouze ten.",
-    type: "gameMessage",
-    choices: [{
-      text: "CO DÁL?",
-      nextStep: "foto"
-    }]
-  },
-
-  foto: {
-    text: "---- FOTOMONTÁŽ",
-    type: "gameMessage",
-    choices: [{
-      text: "přece si to celé nemůžu vymyslet..",
-      nextStep: "zdroj"
-    }]
-  },
-
-  zdroj: {
-    text: "Právě naopak. --- zahraniční dezinformační weby nebo pochybné studie",
-    type: "gameMessage",
-    choices: [{
-      text: "jsem připraven zkusit si to na tématu z diskuze na facebooku!",
-      nextStep: "searchfb_post1"
-    }]
-  },
-
   post1_publish: {
-    text: "tady to končí",
+    text: "článek o 1",
     type: "webPost",
     choices: [{
-      text: "o tomhle napíšu, že Britové lhali!",
-      nextStep: "newsheadlines_novicok"
-    }, {
-      text: "Novičok je nuda, dál!",
-      nextStep: "newsheadlines_2"
+      text: "vydat na web!",
+      nextStep: "problem"
     }]
   },
 
   post2_publish: {
-    text: "tady to končí",
+    text: "článek o 2",
     type: "webPost",
     choices: [{
-      text: "o tomhle napíšu, že Britové lhali!",
-      nextStep: "newsheadlines_novicok"
-    }, {
-      text: "Novičok je nuda, dál!",
-      nextStep: "newsheadlines_2"
+      text: "vydat na web",
+      nextStep: "problem"
     }]
   },
 
   post3_publish: {
-    text: "tady to končí",
+    text: "Nad Evropou se valí radioaktivní mrak pocházející zřejmě z podivné exploze ve francouzské jaderné elektrárně. Vlády mlčí, Francie se snaží bagatelizovat celý incident slovy o neškodnosti radionuklidů a my doporučujeme nakoupit okamžitě jódové tablety a dozimetry!",
     type: "webPost",
     choices: [{
-      text: "o tomhle napíšu, že Britové lhali!",
-      nextStep: "newsheadlines_novicok"
+      text: "zveřejnit!",
+      nextStep: "problem"
+    }]
+  },
+
+  problem: {
+    text: "Máme problém",
+    type: "webMessage",
+    choices: [{
+      text: "nemám rád problémy",
+      nextStep: "problem_explain"
     }, {
-      text: "Novičok je nuda, dál!",
-      nextStep: "newsheadlines_2"
+      text: "co se děje?",
+      nextStep: "problem_explain"
+    }]
+  },
+
+  problem_explain: {
+    text: "nějaký fact checker se zmiňuje o tvém webu",
+    type: "webMessage",
+    choices: [{
+      text: "to snad ne, ukažte mi to",
+      nextStep: "factchecker_post"
+    }]
+  },
+
+  factchecker_post: {
+    text: "Falešná zpráva. Tento web šíří dezinformace. Zpravodajský server iROZHLAS.cz pravdivost zprávy vyvrátil.",
+    type: "socialPost",
+    choices: [{
+      text: "hmmm",
+      nextStep: "problem_explain"
     }]
   }
-};
+
+}, _defineProperty(_gameData, "problem_explain", {
+  text: "jak budete reagovat?",
+  type: "webMessage",
+  choices: [{
+    text: "přiznám chybu a omluvím se",
+    nextStep: "factchecker_omluva"
+  }, {
+    text: "nařčení popřu a zaútočím zpátky!",
+    nextStep: "factchecker_utok"
+  }]
+}), _defineProperty(_gameData, "factchecker_omluva", {
+  text: "Omluva? Nepřichází v úvahu! Nejlepší obrana je útok!",
+  type: "webMessage",
+  choices: [{
+    text: "zaútočit na fact checkery",
+    nextStep: "factchecker_utok"
+  }]
+}), _defineProperty(_gameData, "factchecker_utok", {
+  text: "O veřejnoprávním Českém rozhlasu a „novinářích“ kteří pro něj pracují se dávno ví, že nám zatajují informace! A to je platíme vlastními penězi! ",
+  type: "socialPost",
+  choices: [{
+    text: "a je to!",
+    nextStep: "factchecker_reakcelidi"
+  }]
+}), _defineProperty(_gameData, "factchecker_reakcelidi", {
+  text: "nějaký fact checker blabla",
+  type: "socialPost",
+  choices: [{
+    text: "haha!",
+    nextStep: "badge_manipulace"
+  }]
+}), _defineProperty(_gameData, "badge_manipulace", {
+  text: "Gratuluji! Podařilo se ti zmanipulovat lidi na internetech. Blabla",
+  type: "gameBadge",
+  choices: [{
+    text: "Díky!",
+    nextStep: "whatsnext"
+  }]
+}), _defineProperty(_gameData, "whatsnext", {
+  text: "tady to končí",
+  type: "gameBadge",
+  choices: [{
+    text: "Díky!",
+    nextStep: "whatsnext"
+  }]
+}), _gameData);
