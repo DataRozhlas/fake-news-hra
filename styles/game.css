@@ -25,6 +25,20 @@
   font-size: small;
 }
 
+.web-title {
+  background: red;
+}
+
+.web-title-name {
+  font-variant: small-caps;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.web-title-claim {
+  font-style: italic;
+}
+
 .choice-buttons {
   display: flex;
   flex-wrap: wrap;

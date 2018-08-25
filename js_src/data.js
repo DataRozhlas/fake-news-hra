@@ -1,5 +1,5 @@
-// types: gameMessage, socialPost, postReakce, webName, gameBadge, webPost
-const gameData = {
+export const gameData = {
+  // types: gameMessage, socialPost, postReakce, webName, gameBadge, webPost
   start: {
     text: "Rád vás poznávám.",
     type: "gameMessage",
@@ -67,114 +67,109 @@ const gameData = {
   },
 
   question1_choice1: {
-    text: "Zhnusení a prohnilost neziskovek, udělá se vám zle. Důchodci třou bídu. Stát je nechal ostudně na okraji zájmu. Kšeft s chudobou a nelidské exekuce!",
+    text: "Státu nevadí kšefty s chudobou ani exekuce, zato lije peníze do prohnilých neziskovek. Dělá se mi zle!",
     type: "socialPost",
+    username: "Naštvaný občan",
     choices: [{
       text: "Neziskovky mě nezajímají.",
       nextStep: "question1_choice2"
     }, {
       text: "Sdílím!",
       nextStep: "question1_after",
-      scoreChange: 100,
-      trustChange: -10
+      scoreChange: 16,
+      trustChange: 0
     }]
   },
 
   question1_choice2: {
-    text: "Česká televize prokazatelně manipuluje s diváky. Její kodex je k ničemu, dodává bývalý zpravodajský důstojník",
+    text: "Česká televize s námi neustále manipuluje. Kvůli politické korektnosti porušuje vlastní kodex a možná i zákon!",
     type: "socialPost",
+    username: "Naštvaný občan",
     choices: [{
       text: "ČT je mi ukradená.",
       nextStep: "question1_choice3"
     }, {
       text: "Sdílím!",
       nextStep: "question1_after",
-      scoreChange: 100,
-      trustChange: -10
+      scoreChange: 27,
+      trustChange: 0
     }]
   },
 
   question1_choice3: {
-    text: "Zemědělci na besedě prozradili vše: Dva roky staré belgické máslo na českém trhu. V zájmu EU není, abychom vyráběli mléko. Měli jsme 1,3 milionu krav a dnes...",
+    text: "Neomarxistická EU ničí české zemědělce! Na našich polích se pásly statisíce krav, vyráběli jsme mléko pro celou zemi - a dnes?",
     type: "socialPost",
+    username: "Naštvaný občan",
     choices: [{
       text: "EU? Nuda...",
       nextStep: "question1_choice1"
     }, {
       text: "Sdílím!",
       nextStep: "question1_after",
-      scoreChange: 100,
-      trustChange: -10
+      scoreChange: 21,
+      trustChange: 0
     }]
   },
 
   question1_after: {
-    text: "Naprostý souhlas! Konečně někdo sdílí pravdu!",
-    name: "Pepa", 
-    type: "postReakce",
-    choices: [{
-      text: "Díky",
-      nextStep: "question1_after2",
-    }]
-  },
-
-  question1_after2: {
-    text: "A prolhaná média mlčí.. díky za info! ",
-    name: "Julie", 
-    type: "postReakce",
-    choices: [{
-      text: "Rádo se stalo",
-      nextStep: "feedback",
-    }]
-  },
-
-  feedback: {
-    text: "Gratuluji! Váš smyšlený status zmátl několik přátel. Jak se cítíte? ",
+    text: "Váš rozezlený status sdílelo několik přátel a přibylo vám pár sledujících. Gratuluji! Jak se cítíte?",
     type: "gameMessage",
     choices: [{
       text: "Skvěle!",
       nextStep: "goPro",
     }, {
-    text: "Tohle není správné..",
+    text: "No nevím...",
       nextStep: "feedback_unsure"
     }]
   },
 
   feedback_unsure: {
-    text: "Ale! Trošku překroutit realitu přece není nezákonné. Navíc je to zábava, uvidíte!",
+    text: "Ale no tak! Trošku překroutit realitu přece není nezákonné. Navíc to může být docela zábava!",
     type: "gameMessage",
     choices: [{
-      text: "Tak dobře",
+      text: "No dobře.",
       nextStep: "goPro",
     }, {
-    text: "Když já nevím..",
-      nextStep: "theend"
+      text: "Ale já nechci!",
+      nextStep: "feedback_unsure2"
     }]
   },
 
-    theend: {
-      text: "Pokud máte ambice stát se pořádným dezinformátorem morálku musíte odložit stranou!",
-      type: "gameMessage",
-      choices: [{
-        text: "no tak dobře..",
-        nextStep: "goPro",
-      }] 
-   }, 
-
-   goPro: {
-    text: "Tak to má být! Je na čase rozjet to ve velkém! Co takhle založit vlastní dezinformační web?",
+  feedback_unsure2: {
+    text: "S takovým přístupem to daleko nedotáhnete. Rozmyslete si to, můžete si slušně vydělat!",
     type: "gameMessage",
     choices: [{
-      text: "souhlas",
+      text: "Tak fajn.",
+      nextStep: "goPro",
+    }] 
+  }, 
+
+  goPro: {
+    text: "Tak to má být! Je na čase rozjet to ve velkém. Co podnikneme?",
+    type: "gameMessage",
+    choices: [{
+      text: "Založím si blog.",
+      nextStep: "startBlog",
+    }, {
+      text: "Založím si zpravodajský web!",
+      nextStep: "startWeb"
+    }] 
+  },
+
+  startBlog: {
+    text: "Blog?! Copak je rok 2005? Pokud chcete v tomhle byznysu uspět, potřebujete trochu sebevědomí. A zpravodajský web.",
+    type: "gameMessage",
+    choices: [{
+      text: "To je fakt.",
       nextStep: "startWeb",
     }] 
   },
 
   startWeb: {
-    text: "Důležitý je název a správný slogan.",
+    text: "Úspěšný web musí mít zapamatovatelný název a chytlavý slogan. Mám tu pár možností.",
     type: "gameMessage",
     choices: [{
-      text: "Rozumím! Vybrat název mého webu.",
+      text: "Sem s nimi!",
       nextStep: "startWeb_choice1",
     }] 
   },
@@ -188,20 +183,20 @@ const gameData = {
       nextStep: "startWeb_choice2",
     }, {
       text: "Beru!",
-      nextStep: "startWeb_done",
+      nextStep: "choosePenName",
     }]
   },
 
   startWeb_choice2: {
-    text: "Nezávislé zprávy",
-    slogan: "Bez cenzury!",
+    text: "Necenzurované zprávy",
+    slogan: "Nezávislé, nefiltrované, pravdivé",
     type: "webName",
     choices: [{
       text: "Ne",
       nextStep: "startWeb_choice3",
     }, {
       text: "Skvělé",
-      nextStep: "startWeb_done",
+      nextStep: "choosePenName",
     }]
   },
 
@@ -214,12 +209,12 @@ const gameData = {
       nextStep: "startWeb_choice1",
     }, {
       text: "To je ono!",
-      nextStep: "startWeb_done",
+      nextStep: "choosePenName",
     }]
   },
 
-  startWeb_done: {
-    text: "Správná volba. Pod jakým pseudonymem budete články publikovat, šéfredaktore?",
+  choosePenName: {
+    text: "{siteName}! Správná volba. Pod jakým pseudonymem budete články publikovat, pane šéfredaktore?",
     type: "gameMessage",
     choices: [{
       text: "Vedoucí cirkusu",
@@ -229,22 +224,25 @@ const gameData = {
       nextStep: "badge_impersonation",
     }, {
       text: "Pseudonym? Pod vlastním jménem!",
-      nextStep: "startWeb_doneExplain",
+      nextStep: "choosePenName2",
     }]
   },
 
-  startWeb_doneExplain: {
-    text: "Na většině dezinformačních webů vycházejí články anonymně",
+  choosePenName2: {
+    text: "Nesmysl. Copak by vám čtenáři věřili, že přinášíte tajné informace, pokud byste se je nebáli zveřejňovat pod vlastním jménem? Vyberte si pseudonym.",
     type: "gameMessage",
     choices: [{
-      text: "Ok",
-      nextStep: "startWeb_done",
+      text: "Vedoucí cirkusu",
+      nextStep: "badge_impersonation",
+    }, {
+      text: "Pravdomluvka",
+      nextStep: "badge_impersonation",
     }] 
   },
 
   badge_impersonation: {
-    text: "Gratuluji! Z běžného uživatele Facebooku jste se stal šéfredaktorem dezinformačního webu!",
-    type: "gameBadge",
+    text: "Gratuluji, {penName}! Z běžného uživatele Facebooku jste se stal šéfredaktorem dezinformačního webu!",
+    type: "gameMessage",
     choices: [{
       text: "Díky!",
       nextStep: "createcontent_explain",
