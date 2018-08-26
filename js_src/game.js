@@ -46,6 +46,31 @@ function GameMessage(props) {
     )
 }
 
+function Badge(props) {
+    return (
+      <div className="badge">
+        <div className="badge-text">
+          {props.text}
+        </div>
+        <div className="badge-bdg">
+          {props.badge}
+        </div>
+      </div>
+    )
+}
+
+
+function Image(props) {
+    return (
+      <div className="game-image">
+        <img className="game-image-img" src={props.image} />
+        <div className="game-image-text">
+          {props.text}
+        </div>
+      </div>
+    )
+}
+
 function SocialPost(props) {
     return (
       <div className="social-post">
@@ -65,6 +90,15 @@ function WebTitle(props) {
     )
 }
 
+function WebPost(props) {
+    return (
+      <div className="web-post">
+        <div className="web-post-webname">{props.webname}</div>
+        <div className="web-post-text">{props.text}</div>
+      </div>
+    )
+}
+
 function ChoiceButton(props) {
   return (
       <button className="choice-button" onClick={props.onClick}>
@@ -80,9 +114,10 @@ class Game extends React.Component {
       score: 0,
       trust: 10,
       step: "start",
+      //step: "badge_emotion",
       history: [],
-      siteName: "",
-      penName: ""
+      siteName: "Náhradní jméno webu",
+      penName: "Náhradní jméno autora"
     };
   }
 
@@ -95,7 +130,7 @@ class Game extends React.Component {
       this.setState({
         siteName: stepText
       })
-    } else if (choice.nextStep === "badge_impersonation") {
+    } else if (choice.nextStep === "penName_chosen") {
       this.setState({
         penName: choice.text
       })
@@ -120,12 +155,23 @@ class Game extends React.Component {
       const text = this.processText(step.text);
       return <GameMessage text={text} />
     } else if (step.type === "socialPost") {
-      return <SocialPost username={step.username} text={step.text} />
+      if (step.username === "{siteName}") {
+        step.username = this.state.siteName;
+      }
+      const text = this.processText(step.text);
+      return <SocialPost username={step.username} text={text} />
     } else if (step.type === "webName") {
       return <WebTitle title={step.text} claim={step.slogan} />
-    } else { // fix
-      return <GameMessage text={step.text} />
-    }
+    } else if (step.type === "badge") {
+      return <Badge text={step.text} badge={step.badge} />
+    } else if (step.type === "webPost") {
+      if (step.webName === "{siteName}") {
+        step.webName = this.state.siteName;
+      }
+      return <WebPost webname={step.webName} text={step.text} />
+    } else if (step.type === "image") {
+      return <Image text={step.text} image={step.image} />
+    } else { return }
   }
 
   render() {

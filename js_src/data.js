@@ -1,5 +1,5 @@
 export const gameData = {
-  // types: gameMessage, socialPost, postReakce, webName, gameBadge, webPost
+  // types: gameMessage, socialPost, webName, badge, webPost
   start: {
     text: "Rád vás poznávám.",
     type: "gameMessage",
@@ -218,10 +218,10 @@ export const gameData = {
     type: "gameMessage",
     choices: [{
       text: "Vedoucí cirkusu",
-      nextStep: "badge_impersonation",
+      nextStep: "penName_chosen",
     }, {
       text: "Pravdomluvka",
-      nextStep: "badge_impersonation",
+      nextStep: "penName_chosen",
     }, {
       text: "Pseudonym? Pod vlastním jménem!",
       nextStep: "choosePenName2",
@@ -233,175 +233,1204 @@ export const gameData = {
     type: "gameMessage",
     choices: [{
       text: "Vedoucí cirkusu",
-      nextStep: "badge_impersonation",
+      nextStep: "penName_chosen",
     }, {
       text: "Pravdomluvka",
-      nextStep: "badge_impersonation",
+      nextStep: "penName_chosen",
     }] 
   },
 
+  penName_chosen: {
+    text: "Gratuluji, {penName}! Z běžného uživatele Facebooku jste se stal šéfredaktorem webu!",
+    type: "gameMessage",
+    choices: [{
+      text: "Hurá!",
+      nextStep: "penName_chosen2",
+      scoreChange: 30,
+      trustChange: 25
+    }]
+  },
+
+  penName_chosen2: {
+    text: "A web musí být vidět na Facebooku. Pár dalších naštvaných statusů, tentokrát přímo na facebookové stránce {siteName}, a fanoušci začínají přibývat.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jupí!",
+      nextStep: "badge_impersonation",
+    }]
+  },
+
   badge_impersonation: {
-    text: "Gratuluji, {penName}! Z běžného uživatele Facebooku jste se stal šéfredaktorem dezinformačního webu!",
-    type: "gameMessage",
+    text: "Dostal jste odznak IMPERSONATION!",
+    type: "badge",
+    badge: "impersonation",
     choices: [{
-      text: "Díky!",
-      nextStep: "createcontent_explain",
+      text: "Pokračujeme!",
+      nextStep: "firstContent_explain",
     }]
   },
 
-  createcontent_explain: {
-    text: "Způsobů jak vytvořit dezinformace je hned několik. Zkuste publikovat první článek.",
+  firstContent_explain: {
+    text: "Hurá do práce! Čas na publikaci prvního článku.",
     type: "gameMessage",
     choices: [{
-      text: "napsat článek",
-      nextStep: "createcontent",
+      text: "Tak dobře.",
+      nextStep: "firstContent",
     }]
   },
 
-  createcontent: {
-    text: "Jaký bude obsah vašeho webu?",
+  firstContent: {
+    text: "Jaký se váš web bude tvářit?",
     type: "gameMessage",
     choices: [{
-      text: "emotivní",
-      nextStep: "createcontent_emotion",
+      text: "Emotivně",
+      nextStep: "firstContent_emotion",
     }, {
-      text: "seriozní",
-      nextStep: "createcontent_serious",
+      text: "Seriózně",
+      nextStep: "firstContent_serious",
     }]
   },
 
-  createcontent_emotion: {
-    text: "Správně! Emoce mohou pomoct zprávy šířit mezi lidmi. Co dál?",
+  firstContent_serious: {
+    text: "Chyba! Nejlépe získáte čtenáře využitím jejich emocí.",
     type: "gameMessage",
     choices: [{
-      text: "podívám se o čem píši zpravodajské weby a napadnu jejich zprávy",
-      nextStep: "newsheadlines",
-    },{
-      text: "vymyslím si vlastní konspiraci",
-      nextStep: "conspiracy",
+      text: "Tak do nich!",
+      nextStep: "firstContent_emotion",
     }]
   },
 
-  createcontent_serious: {
-    text: "Neblázněte! Vždyť chcete dosáhnout role deziformátora!",
+  firstContent_emotion: {
+    text: "Správně! Nejlépe bude fungovat, když se vyjádříme ke žhavě aktuálnímu tématu. Co se inspirovat odjinud?",
     type: "gameMessage",
     choices: [{
-      text: "dobře, chci si hrát s lidskými emocemi",
-      nextStep: "createcontent_emotion",
-    }]
+      text: "Po něčem kouknu.",
+      nextStep: "firstContent_choice1",
+    }, {
+      text: "Chci psát o tuningu!",
+      nextStep: "firstContent_horses",
+    },]
   },
 
-  newsheadlines: {
-    text: "Bývalého ruského agenta Sergeje Skripala propustili z nemocnice, kde se ocitl, když byl vystaven nervově paralytické látce Novičok",
-    type: "webPost",
-    choices: [{
-      text: "o tomhle napíšu, že Britové lhali!",
-      nextStep: "newsheadlines_novicok",
-    },{
-      text: "Novičok je nuda, dál!",
-      nextStep: "newsheadlines_2",
-    }]
-  },
-
-  newsheadlines_2: {
-    text: "Nová hymna stála 600 tisíc korun. 'Velkou částí jsem přispěl sám,' řekl předseda Českého olympijského výboru",
-    type: "webPost",
-    choices: [{
-      text: "překroutit zprávu",
-      nextStep: "newsheadlines_hymna",
-    },{
-      text: "hmm, zpátky na Skripala",
-      nextStep: "newsheadlines",
-    }]
-  },
-
-  newsheadlines_novicok: {
-    text: "Velikonoční zázrak: Otrávená dcera Skripala ožila. Snědl britský agent novičok, nebo artyčok? Britové obelhali celý svět už jednou s Irákem!",
-    type: "webPost",
-    choices: [{
-      text: "pulikovat",
-      nextStep: "newsheadlines_reactions",
-    }]
-  },
-
-  newsheadlines_hymna: {
-    text: "Nová verze české hymny je útokem na Českou republiku a její státnost. Kakofonie disharmonických zvuků má zakódované audiotomy bratří Cohenů, které vyzývají posluchače k sebevraždě. Český olympijský výbor zkouší na českém národu pokus se satanskými symboly, jaké jsme viděli při otevírání Gotthardského tunelu! Tuto skladbu si nepouštějte ani do sluchátek a už vůbec ne před malými dětmi!",
-    type: "webPost",
-    choices: [{
-      text: "publikovat",
-      nextStep: "newsheadlines_reactions_hymna",
-    }]
-  },
-
-  conspiracy: {
-    text: "Nová verze české hymny je útokem na Českou republiku a její státnost. Kakofonie disharmonických zvuků má zakódované audiotomy bratří Cohenů, které vyzývají posluchače k sebevraždě. Český olympijský výbor zkouší na českém národu pokus se satanskými symboly, jaké jsme viděli při otevírání Gotthardského tunelu! Tuto skladbu si nepouštějte ani do sluchátek a už vůbec ne před malými dětmi!",
+  firstContent_horses: {
+    text: "No... úpravy aut jsou určitě podnětné téma, ale {siteName} má být zpravodajský web, pamatujete?",
     type: "gameMessage",
     choices: [{
-      text: "publikovat!!",
-      nextStep: "newsheadlines_reactions_hymna",
+      text: "Ach jo...",
+      nextStep: "firstContent_choice1",
     }]
   },
 
-  newsheadlines_reactions: {
-    text: "Naprostý souhlas! Konečně někdo sdílí pravdu!",
-    name: "Majda", 
-    type: "postReakce",
+  firstContent_choice1: {
+    webName: "iDnes.cz",
+    text: "Vojáci v misích drží nebezpečí daleko od našich hranic",
+    type: "webPost",
     choices: [{
-      text: "více!",
-      nextStep: "newsheadlines_reactions_2",
+      text: "Tohle napadnu!",
+      nextStep: "firstContent_choice1_chosen",
+    }, {
+      text: "Vojáci? Pff...",
+      nextStep: "firstContent_choice2",
     }]
   },
 
-  newsheadlines_reactions_2: {
-    text: "Hrůza! Proč nám o tom média mlčí???",
-    name: "Honza", 
-    type: "postReakce",
+  firstContent_choice2: {
+    webName: "iROZHLAS",
+    text: "Zemi do konce století hrozí oteplení o více než dva stupně, varují vědci. Přijdou sucha i silné hurikány",
+    type: "webPost",
     choices: [{
-      text: "ano!",
-      nextStep: "badge_emotion",
+      text: "Tohle napadnu!",
+      nextStep: "firstContent_choice2_chosen",
+    }, {
+      text: "To raději ty vojáky",
+      nextStep: "firstContent_choice1",
+    }]
+  },
+
+  firstContent_choice1_chosen: {
+    text: "Zahraniční vojenské mise jsou žhavé téma. Co si o nich myslíte?",
+    type: "gameMessage",
+    choices: [{
+      text: "Je to vlastizrada!",
+      nextStep: "firstContent_choice1_select",
+    }, {
+      text: "Spojenecké závazky musíme plnit.",
+      nextStep: "firstContent_choice1_unsure",
+    }]
+  },
+
+  firstContent_choice1_unsure: {
+    text: "Ale prosímvás, to tvrdí kdekdo! Jak chcete získat fanoušky takhle nudným postojem?",
+    type: "gameMessage",
+    choices: [{
+      text: "Změna klimatu je stejně lákavější.",
+      nextStep: "firstContent_choice2_chosen",
+    }, {
+      text: "Dobře, měním názor!",
+      nextStep: "firstContent_choice1_surenow",
+    }]
+  },
+
+  firstContent_choice1_surenow: {
+    text: "Názorová flexibilita je v naší branži potřeba! Už tedy máte za to, že vojenské mise jsou trestuhodná šílenost?",
+    type: "gameMessage",
+    choices: [{
+      text: "Samozřejmě!",
+      nextStep: "firstContent_choice1_select",
+    }, {
+      text: "Co jste říkal o té změně klimatu?",
+      nextStep: "firstContent_choice2_chosen",
+    }]
+  },
+
+  firstContent_choice1_select: {
+    text: "Výborně! Na vašem názoru stejně nesejde - jde nám o čtenost. Čas ukázat lidem pravdu o českých vojácích.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jak to provedeme?",
+      nextStep: "firstContent_choice1_attacktype",
+    }]
+  },
+
+  firstContent_choice2_chosen: {
+    text: "Proč ne. Co si myslíte o změně klimatu?",
+    type: "gameMessage",
+    choices: [{
+      text: "Úplný nesmysl!",
+      nextStep: "firstContent_choice2_select",
+    }, {
+      text: "Je to vážný problém.",
+      nextStep: "firstContent_choice2_unsure",
+    }]
+  },
+
+  firstContent_choice2_unsure: {
+    text: "Vždyť to tvrdí skoro každý! Jak chcete získat fanoušky takhle nudným postojem?",
+    type: "gameMessage",
+    choices: [{
+      text: "Radši napíšu o vojácích.",
+      nextStep: "firstContent_choice1_chosen",
+    }, {
+      text: "Dobře, ještě to zvážím.",
+      nextStep: "firstContent_choice2_surenow",
+    }]
+  },
+
+  firstContent_choice2_surenow: {
+    text: "Takže už souhlasíte, že teorie o změně klimatu jsou sprosté podvody?",
+    type: "gameMessage",
+    choices: [{
+      text: "Je to tak!",
+      nextStep: "firstContent_choice2_select",
+    }, {
+      text: "Jak že bylo to s těmi vojáky?",
+      nextStep: "firstContent_choice1_chosen",
+    }]
+  },
+
+  firstContent_choice2_select: {
+    text: "Výborně! Na vašem názoru stejně nesejde - jde nám o čtenost. Čas ukázat lidem pravdu o globálním oteplování.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jak to provedeme?",
+      nextStep: "firstContent_choice2_attacktype",
+    }]
+  },
+
+  firstContent_choice1_attacktype: {
+    text: "Zaútočíme na jejich emoce. Jak přesně, to už je na vás.",
+    type: "gameMessage",
+    choices: [{
+      text: "Objasním teoretické pozadí.",
+      nextStep: "firstContent_choice1_attack_boring",
+    }, {
+      text: "Zdiskredituju armádu.",
+      nextStep: "firstContent_choice1_attack_personal",
+    }, {
+      text: "Dám do toho srdíčko.",
+      nextStep: "firstContent_choice1_attack_emotional",
+    }]
+  },
+
+  firstContent_choice1_attack_boring: {
+    text: "Chápu, že jste v tom nový, ale koho budou podle vás zajímat nějaké teorie?! Laskavě vyberte jinou možnost.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zdiskredituju armádu.",
+      nextStep: "firstContent_choice1_attack_personal",
+    }, {
+      text: "Dám do toho srdíčko.",
+      nextStep: "firstContent_choice1_attack_emotional",
+    }]
+  },
+
+  firstContent_choice1_attack_personal: {
+    text: "Správně, jen to těm zeleným mozkům natřete! Jak to uděláte?",
+    type: "gameMessage",
+    choices: [{
+      text: "Napíšu článek.",
+      nextStep: "firstContent_choice1_attack_personal_article_intro",
+    }, {
+      text: "Nasdílím obrázek.",
+      nextStep: "firstContent_choice1_attack_personal_picture_intro",
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_intro: {
+    text: "O úspěchu článku rozhoduje dobrý titulek. Nic jiného stejně lidi většinou nečtou. Dám vám pár možností.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice1_attack_personal_article_1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_1: {
+    text: "Šílení generálové posílají české hochy do sebevražedných misí!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_personal_article_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_personal_article_1_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_1_chosen: {
+    text: "To je ono! O mladé životy má starost každý. Přibylo vám pár fanoušků. Co na váš článek říkají?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_personal_article_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_2: {
+    text: "Proč válčíme v zemích, které na nás neútočí? Velitelé českých jednotek NEZNAJÍ ODPOVĚĎ!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_personal_article_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_personal_article_2_chosen",
+      scoreChange: 64
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_2_chosen: {
+    text: "Skvělé! Dokázal jste z armádních špiček udělat hlupáky. Co na to vaši fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_personal_article_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_3: {
+    text: "ODHALENÍ: Takzvaně česká afghánská mise podléhá německému velení!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_personal_article_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_personal_article_3_chosen",
+      scoreChange: 85
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_3_chosen: {
+    text: "Výtečně! Na faktické správnosti vašeho sólokapru nezáleží, důležité je, že k vám přivedl nové fanoušky. Co na článek říkají?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_personal_article_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_react1: {
+    text: "Dělají si z nás legraci? Okamžitě stáhněte naše vojáky!!!",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice1_attack_personal_article_react2"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_article_react2: {
+    text: "Sama bych to neřekla líp než {penName}. Já i moje rodina už budeme volit jen ty, kteří těmhle zrůdnostem zamezí.",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_intro: {
+    text: "obrázek armáda personal intro",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice1_attack_personal_picture_1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_1: {
+    text: "obrázek armáda personal 1",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_personal_picture_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_personal_picture_1_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_1_chosen: {
+    text: "obrázek armáda personal 1 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_personal_picture_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_2: {
+    text: "obrázek armáda personal 2",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_personal_picture_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_personal_picture_2_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_2_chosen: {
+    text: "obrázek armáda personal 2 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_personal_picture_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_3: {
+    text: "obrázek armáda personal 3",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_personal_picture_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_personal_picture_3_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_3_chosen: {
+    text: "obrázek armáda personal 3 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_personal_picture_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_react1: {
+    text: "obrázek armáda personal react 1",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice1_attack_personal_picture_react2"
+    }]
+  },
+
+  firstContent_choice1_attack_personal_picture_react2: {
+    text: "obrázek armáda personal react 2",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional: {
+    text: "Dobrá volba. Zasáhněte fanouškům jejich citlivá místa! Jak to uděláte?",
+    type: "gameMessage",
+    choices: [{
+      text: "Napíšu článek.",
+      nextStep: "firstContent_choice1_attack_emotional_article_intro",
+    }, {
+      text: "Nasdílím obrázek.",
+      nextStep: "firstContent_choice1_attack_emotional_picture_intro",
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_intro: {
+    text: "O úspěchu článku rozhoduje dobrý titulek. Nic jiného stejně lidi většinou nečtou. Dám vám pár možností.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice1_attack_emotional_article_1"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_1: {
+    text: "Exkluzivní ZPOVĚĎ matky mrtvého vojína: Zemřel úplně zbytečně!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_emotional_article_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_emotional_article_1_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_1_chosen: {
+    text: "Dobrá práce! Když rozhovor naláká dost lidí, nevadí, že je tak trochu vymyšlený. Co na něj říkají vaši noví fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_emotional_article_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_2: {
+    text: "Masové hroby v Iráku i Afghanistánu. Může v nich skončit i vaše dítě",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_emotional_article_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_emotional_article_2_chosen",
+      scoreChange: 64
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_2_chosen: {
+    text: "Výborně! Útočit na strach rodičů o vlastní děti je zaručená taktika, která vám přinesla nové fanoušky. Jak na ni reagují?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_emotional_article_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_3: {
+    text: "Reportáž: Z amerických válečných hrdinů jsou opuštění bezdomovci. Chceme snad, aby Češi končili stejně?",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_emotional_article_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_emotional_article_3_chosen",
+      scoreChange: 85
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_3_chosen: {
+    text: "V pořádku. Postrašit čtenáře děsivými příběhy odjinud se vyplácí! Jak na článek reagují fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_emotional_article_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_react1: {
+    text: "Při čtení tohohle příběhu jsem měl slzy v očích. Zastavme zbytečné válčení!",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice1_attack_emotional_article_react2"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_article_react2: {
+    text: "Sledovat {siteName} se vyplácí. Pravda o armádě je krutá, ale vláda ji nesmí tajit. STOP ČESKÝM ŽOLDÁKŮM!",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_picture_intro: {
+    text: "obrázek armáda emotional intro",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice1_attack_emotional_picture_1"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_picture_1: {
+    text: "obrázek armáda emotional 1",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_emotional_picture_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_emotional_picture_1_chosen",
+      scoreChanůge: 55
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_picture_1_chosen: {
+    text: "obrázek armáda emotional 1 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_emotional_picture_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_picture_2: {
+    text: "obrázek armáda emotional 2",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_emotional_picture_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_emotional_picture_2_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_picture_2_chosen: {
+    text: "obrázek armáda emotional 2 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_emotional_picture_react1"
     }]
   },
   
-  newsheadlines_reactions_hymna: {
-    text: "Co je to za blbost? Tomuhle máme věřit?",
-    name: "Majda", 
-    type: "postReakce",
+  firstContent_choice1_attack_emotional_picture_3: {
+    text: "obrázek armáda emotional 3",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
     choices: [{
-      text: "a sakra!",
-      nextStep: "newsheadlines_reactions_hymna2",
+      text: "Ech...",
+      nextStep: "firstContent_choice1_attack_emotional_picture_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice1_attack_emotional_picture_3_chosen",
+      scoreChange: 55
     }]
   },
 
-  newsheadlines_reactions_hymna2: {
-    text: "Děláte z nás blázny! Taková blbost",
-    name: "Honza", 
-    type: "postReakce",
+  firstContent_choice1_attack_emotional_picture_3_chosen: {
+    text: "obrázek armáda emotional 3 chosen",
+    type: "gameMessage",
     choices: [{
-      text: "co teď?",
-      nextStep: "nextstepfail",
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice1_attack_emotional_picture_react1"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_picture_react1: {
+    text: "obrázek armáda emotional react 1",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice1_attack_emotional_picture_react2"
+    }]
+  },
+
+  firstContent_choice1_attack_emotional_picture_react2: {
+    text: "obrázek armáda emotional react 2",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  firstContent_choice2_attacktype: {
+    text: "Zaútočíme na jejich emoce. Jak přesně, to už je na vás.",
+    type: "gameMessage",
+    choices: [{
+      text: "Objasním teoretické pozadí.",
+      nextStep: "firstContent_choice2_attack_boring",
+    }, {
+      text: "Zdiskredituju klimatické vědce.",
+      nextStep: "firstContent_choice2_attack_personal",
+    }, {
+      text: "Dám do toho srdíčko.",
+      nextStep: "firstContent_choice2_attack_emotional",
+    }]
+  },
+
+  firstContent_choice2_attack_boring: {
+    text: "Chápu, že jste v tom nový, ale koho budou podle vás zajímat nějaké teorie?! Laskavě vyberte jinou možnost.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zdiskredituju klimatické vědce.",
+      nextStep: "firstContent_choice2_attack_personal",
+    }, {
+      text: "Dám do toho srdíčko.",
+      nextStep: "firstContent_choice2_attack_emotional",
+    }]
+  },
+
+  firstContent_choice2_attack_personal: {
+    text: "Jen do nich, do chytrolínů! Jak to uděláte?",
+    type: "gameMessage",
+    choices: [{
+      text: "Napíšu článek.",
+      nextStep: "firstContent_choice2_attack_personal_article_intro",
+    }, {
+      text: "Nasdílím obrázek.",
+      nextStep: "firstContent_choice2_attack_personal_picture_intro",
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_intro: {
+    text: "O úspěchu článku rozhoduje dobrý titulek. Nic jiného stejně lidi většinou nečtou. Dám vám pár možností.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice2_attack_personal_article_1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_1: {
+    text: "Kdo platí podvržené pseudostudie o oteplování? LŽI samozvaných expertů dokazují: koho chleba jíš, toho píseň zpívej!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_personal_article_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_personal_article_1_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_1_chosen: {
+    text: "Správně! Ať už někoho za jeho práci platí kdokoliv, vždy to u části lidí vyvolá podezření. Co na článek říkají vaši fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_personal_article_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_2: {
+    text: "ODHALENO! Přední „odborník“ na změny klimatu nachytán s tajným milencem!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_personal_article_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_personal_article_2_chosen",
+      scoreChange: 64
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_2_chosen: {
+    text: "Dobrá taktika! Napadnout morální profil toho, koho chceme zdiskreditovat, se vyplácí - i když nařčení nesouvisí s jeho prací. Co na to vaši fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_personal_article_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_3: {
+    text: "Univerzity pod diktaturou neomarxismu. Ukážeme vám, jak politická korektnost zakazuje vědcům říkat pravdu o klimatické změně!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_personal_article_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_personal_article_3_chosen",
+      scoreChange: 85
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_3_chosen: {
+    text: "Skvěle! Útok můžete vždy vést tak, že dané téma onálepkujete nepopulárním označením. Jak na to reagují vaši fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_personal_article_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_react1: {
+    text: "Konečně někdo ukázal, jak se to s takzvanými experty ve skutečnosti má! {siteName} je můj nový oblíbený web!",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice2_attack_personal_article_react2"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_article_react2: {
+    text: "Hrají si na vědce, ale jsou to jen loutky - a {penName} to dokazuje. Sdílejte!",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_intro: {
+    text: "obrázek armáda personal intro",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice2_attack_personal_picture_1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_1: {
+    text: "obrázek armáda personal 1",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_personal_picture_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_personal_picture_1_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_1_chosen: {
+    text: "obrázek armáda personal 1 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_personal_picture_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_2: {
+    text: "obrázek armáda personal 2",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_personal_picture_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_personal_picture_2_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_2_chosen: {
+    text: "obrázek armáda personal 2 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_personal_picture_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_3: {
+    text: "obrázek armáda personal 3",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_personal_picture_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_personal_picture_3_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_3_chosen: {
+    text: "obrázek armáda personal 3 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_personal_picture_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_react1: {
+    text: "obrázek armáda personal react 1",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice2_attack_personal_picture_react2"
+    }]
+  },
+
+  firstContent_choice2_attack_personal_picture_react2: {
+    text: "obrázek armáda personal react 2",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional: {
+    text: "Dobrá volba. Zasáhněte fanouškům jejich citlivá místa! Jak to uděláte?",
+    type: "gameMessage",
+    choices: [{
+      text: "Napíšu článek.",
+      nextStep: "firstContent_choice2_attack_emotional_article_intro",
+    }, {
+      text: "Nasdílím obrázek.",
+      nextStep: "firstContent_choice2_attack_emotional_picture_intro",
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_intro: {
+    text: "O úspěchu článku rozhoduje dobrý titulek. Nic jiného stejně lidi většinou nečtou. Dám vám pár možností.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice2_attack_emotional_article_1"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_1: {
+    text: "Důsledek fám o změně klimatu? Šikana firem a miliony lidí bez práce! Přečtěte si, kdy mezi nimi budete vy",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_emotional_article_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_emotional_article_1_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_1_chosen: {
+    text: "To by šlo! Když se čtenáři budou cítit přímo ohroženi, zvedne je to ze židle. Jak na článek reagují fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_emotional_article_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_2: {
+    text: "EXKLUZIVNĚ! Našim dětem vymývají mozky. Ekofašismus už servírují i nejmenším",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_emotional_article_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_emotional_article_2_chosen",
+      scoreChange: 64
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_2_chosen: {
+    text: "Ucházející volba. Lidé nemají rádi, když jsou jejich děti vystaveny ideologii - tedy aspoň když je jiná, než jakou vyznávají oni. Co o článku říkají fanoušci?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_emotional_article_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_3: {
+    text: "Smrt nevinné ženy (†70) zavinili klimatičtí „experti“ a jejich tragická předpověď počasí! A není to první osudový omyl. Budeme jim věřit, že chybu neudělají znova?!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_emotional_article_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_emotional_article_3_chosen",
+      scoreChange: 85
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_3_chosen: {
+    text: "Proč ne? Spojit něčí práci s úmrtím nevinného člověka může fungovat. Jak reagují čtenáři?",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_emotional_article_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_react1: {
+    text: "To už snad přestává všechno. Kdy už ekoteroristi přestanou otravovat vzduch??? Lidi, udělejme s tím konečně něco!",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice2_attack_emotional_article_react2"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_article_react2: {
+    text: "Dnes už snad nejde věřit nikomu. A šrouby se dál utahují... Aspoň máme na naší straně {siteName}.",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_intro: {
+    text: "obrázek armáda emotional intro",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "firstContent_choice2_attack_emotional_picture_1"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_1: {
+    text: "obrázek armáda emotional 1",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_emotional_picture_2"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_emotional_picture_1_chosen",
+      scoreChanůge: 55
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_1_chosen: {
+    text: "obrázek armáda emotional 1 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_emotional_picture_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_2: {
+    text: "obrázek armáda emotional 2",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_emotional_picture_3"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_emotional_picture_2_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_2_chosen: {
+    text: "obrázek armáda emotional 2 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_emotional_picture_react1"
+    }]
+  },
+  
+  firstContent_choice2_attack_emotional_picture_3: {
+    text: "obrázek armáda emotional 3",
+    image: "http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png",
+    type: "image",
+    choices: [{
+      text: "Ech...",
+      nextStep: "firstContent_choice2_attack_emotional_picture_1"
+    }, {
+      text: "Vydávám!",
+      nextStep: "firstContent_choice2_attack_emotional_picture_3_chosen",
+      scoreChange: 55
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_3_chosen: {
+    text: "obrázek armáda emotional 3 chosen",
+    type: "gameMessage",
+    choices: [{
+      text: "Koukneme se!",
+      nextStep: "firstContent_choice2_attack_emotional_picture_react1"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_react1: {
+    text: "obrázek armáda emotional react 1",
+    username: "Jeroným",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "firstContent_choice2_attack_emotional_picture_react2"
+    }]
+  },
+
+  firstContent_choice2_attack_emotional_picture_react2: {
+    text: "obrázek armáda emotional react 2",
+    username: "Majda",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "ban"
+    }]
+  },
+
+  ban: {
+    text: "S první vlaštovkou slavíte úspěch! Gratuluju, čeká vás hvězdná kariéra.",
+    type: "gameMessage",
+    choices: [{
+      text: "Díky!",
+      nextStep: "ban2"
+    }, {
+      text: "Věděl jsem, že na to mám.",
+      nextStep: "ban2"
+    }]
+  },
+  
+  ban2: {
+    text: "Ne tak rychle. Kdy jste naposledy otevřel Facebook?",
+    type: "gameMessage",
+    choices: [{
+      text: "Co se děje?",
+      nextStep: "ban3"
+    }]
+  },
+
+  ban3: {
+    text: "Váš nekompromisně vyrobený obsah byl na poměry Facebooku zřejmě radikální až moc. Vysloužil jste si 24hodinovou blokaci.",
+    type: "gameMessage",
+    choices: [{
+      text: "To ne!",
+      nextStep: "ban4"
+    }, {
+      text: "Co teď?",
+      nextStep: "ban4"
+    }]
+  },
+
+  ban4: {
+    text: "Hraje nám to do karet. Jestli jsou na něco lidé alergičtí, je to cenzura. Stačí trochu zahrát na emoce a fanoušci se pohrnou!",
+    type: "gameMessage",
+    choices: [{
+      text: "Nemůžu se dočkat!",
+      nextStep: "ban5"
+    }]
+  },
+
+  ban5: {
+    text: "Blok končí a my můžeme na Facebooku vydat šťavnatý příspěvek v nové roli internetového disidenta. Na co budeme apelovat?",
+    type: "gameMessage",
+    choices: [{
+      text: "Na strach",
+      nextStep: "ban_fear"
+    }, {
+      text: "Na naštvanost",
+      nextStep: "ban_anger"
+    }]
+  },
+
+  ban_fear: {
+    text: "Když si chodili pro ostatní, mlčel jsem. Když si přišli pro mě, nezbyl nikdo, kdo by se ozval. Takhle brzy dopadneme všichni - pokud nebudeme šířit necenzurovanou pravdu. My si cestu vždy najdeme i přes zákazy. Na {siteName} se můžete spolehnout.",
+    username: "{siteName}",
+    type: "socialPost",
+    choices: [{
+      text: "To by mohlo zabrat.",
+      nextStep: "ban_done",
+      scoreChange: 267,
+      trustChange: 15
+    }]
+  },
+
+  ban_anger: {
+    text: "Neuvěřitelné, co si Facebook dovoluje! Pod zástěrkou „demokracie“ se vrací komunistická cenzura. Odvaha už zase není levná!",
+    username: "{siteName}",
+    type: "socialPost",
+    choices: [{
+      text: "To by mohlo zabrat.",
+      nextStep: "ban_done",
+      scoreChange: 267,
+      trustChange: 15
+    }]
+  },
+
+  ban_done: {
+    text: "To se Facebooku povedlo! Informaci o cenzuře nepohodlných názorů sdílelo několik velkých jmen na sociálních sítích. Fanoušci přibývají ve velkém.",
+    type: "gameMessage",
+    choices: [{
+      text: "Super!",
+      nextStep: "emotion_done"
+    }]
+  },
+
+  emotion_done: {
+    text: "Podařilo se nám zmanipulovat emoce čtenářů tak, aby šířili náš obsah!",
+    type: "gameMessage",
+    choices: [{
+      text: "Dostanu odměnu?",
+      nextStep: "badge_emotion"
     }]
   },
 
   badge_emotion: {
-    text: "Gratuluji! Podařilo se vám využít lidské emoce k šíření dezinformací!",
-    type: "gameBadge",
+    text: "Dostal jste odznak EMOTION!",
+    type: "badge",
+    badge: "emotion",
     choices: [{
-      text: "chci pokračovat",
-      nextStep: "search_fb",
-    }]
-  },
-
-  nextstepfail: {
-    text: "Uff, na tohle vám neskočili. Ale ještě není pozdě váš web zachránit.",
-    type: "gameMessage",
-    choices: [{
-      text: "polepším se!",
+      text: "Pokračujeme!",
       nextStep: "search_fb",
     }]
   },
 
   search_fb: {
-    text: "Co takhle kouknout do diskuzí na Facebooku a najít téma, které lidi zajímá",
+    text: "(TADY KONČÍ ZREDIGOVANÁ ČÁST) Co takhle kouknout do diskuzí na Facebooku a najít téma, které lidi zajímá",
     type: "gameMessage",
     choices: [{
       text: "jdu na to!",
