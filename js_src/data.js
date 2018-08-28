@@ -2922,53 +2922,334 @@ export const gameData = {
   },
 
   discredit_revenge_deny: {
-    text: "(zatím konec)",
+    text: "Může být. Odpovíme těm šťouralům tak, že si to za rámeček nedají!",
     type: "gameMessage",
     choices: [{
-      text: "Popřu všechna nařčení.",
-      nextStep: "discredit_revenge_deny",
+      text: "Dobře!",
+      nextStep: "discredit_revenge_deny_1",
+    }]
+  },
+
+  discredit_revenge_deny_1: {
+    text: "Nařčení veřejnoprávních pisálků jsou absurdní! Nikdy jsme o topení migrantů nepsali!",
+    username: "{siteName}",
+    type: "socialPost",
+    choices: [{
+      text: "Do nich!",
+      nextStep: "discredit_revenge_deny_1_chosen",
+    },{
+      text: "Něco dalšího?",
+      nextStep: "discredit_revenge_deny_2",
+    }]
+  },
+
+  discredit_revenge_deny_1_chosen: {
+    text: "No, to bylo slabé. Vaše lež byla až moc zjevná. Stejně vás ale vaši věrní fanoušci brání.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co píšou?",
+      nextStep: "discredit_revenge_deny_1_chosen_1",
+    }]
+  },
+
+  discredit_revenge_deny_1_chosen_1: {
+    text: "Veřejnoprávní média lživě útočí na {siteName}! My ale tenhle hon na čarodějnice z peněz daňových poplatníků dobře známe!",
+    username: "Martin Pokorný",
+    type: "socialPost",
+    choices: [{
+      text: "Pěkné!",
+      nextStep: "discredit_revenge_deny_1_chosen_2",
+    }]
+  },
+
+  discredit_revenge_deny_1_chosen_2: {
+    text: "Český rozhlas dál tají PRAVDU o nekontrolované migraci. Přesně kvůli tomuhle zvolili Trumpa!",
+    username: "Libuše Nová",
+    type: "socialPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "discredit_revenge_deny_response_1",
+    }]
+  },
+
+  discredit_revenge_deny_2: {
+    text: "Vaše cenzurovaná, politicky korektní pravda možná někomu stojí za slepé následování. My ale máme alternativní fakta!",
+    username: "{siteName}",
+    type: "socialPost",
+    choices: [{
+      text: "Do nich!",
+      nextStep: "discredit_revenge_deny_2_chosen",
+    },{
+      text: "Něco dalšího?",
+      nextStep: "discredit_revenge_deny_3",
+    }]
+  },
+
+  discredit_revenge_deny_2_chosen: {
+    text: "Obratný postup! Zpochybnil jste jednoznačná fakta a upozornil na existenci více možných pravd. To je v našem oboru klasická taktika.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co na to fanoušci?",
+      nextStep: "discredit_revenge_deny_2_chosen_1",
+    }]
+  },
+
+  discredit_revenge_deny_2_chosen_1: {
+    text: "V dnešní složité době má každý svou vlastní verzi událostí. V tom, jestli mají pravdu podplacená veřejnoprávní média, nebo {siteName}, mám ale jasno!",
+    username: "Martin Pokorný",
+    type: "socialPost",
+    choices: [{
+      text: "Pěkné!",
+      nextStep: "discredit_revenge_deny_2_chosen_2",
+    }]
+  },
+
+  discredit_revenge_deny_2_chosen_2: {
+    text: "Český rozhlas neváhá tajit PRAVDU o nekontrolované migraci. Přesně kvůli tomuhle zvolili Trumpa!",
+    username: "Libuše Nová",
+    type: "socialPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "discredit_revenge_deny_response_1",
+    }]
+  },
+
+  discredit_revenge_deny_3: {
+    text: "Že je naše autentické video inscenované? Český rozhlas se opravdu překonává. Nezapomínejme, že v tomto takzvaně nestranném médiu už léta řádí NEOMARXISMUS!",
+    username: "{siteName}",
+    type: "socialPost",
+    choices: [{
+      text: "Do nich!",
+      nextStep: "discredit_revenge_deny_3_chosen",
+    },{
+      text: "Něco dalšího?",
+      nextStep: "discredit_revenge_deny_1",
+    }]
+  },
+
+  discredit_revenge_deny_3_chosen: {
+    text: "Factcheckera jste patřičně onálepkoval a tím z něj udělal jednoznačně zideologizovaného protivníka. Bezvadná práce!",
+    type: "gameMessage",
+    choices: [{
+      text: "Co na to fanoušci?",
+      nextStep: "discredit_revenge_deny_3_chosen_1",
+    }]
+  },
+
+  discredit_revenge_deny_3_chosen_1: {
+    text: "Manipulátoři ovládají veřejnoprávní média! Budeme věřit jim, nebo nezávislému webu, který nemá důvod neříkat necenzurovanou pravdu?",
+    username: "Martin Pokorný",
+    type: "socialPost",
+    choices: [{
+      text: "Pěkné!",
+      nextStep: "discredit_revenge_deny_3_chosen_2",
+    }]
+  },
+
+  discredit_revenge_deny_3_chosen_2: {
+    text: "Neomarxisti ve školách, v poslaneckých lavicích a teď už i v Českém rozhlase. Dnes už ale cenzurovat nemůžou. Šiřme video dál!",
+    username: "Libuše Nová",
+    type: "socialPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "discredit_revenge_deny_response_1",
+    }]
+  },  
+
+  discredit_revenge_deny_response_1: {
+    text: "Naše taktika se vyplatila! Factchecker je najednou v defenzivě a místo útoků se sám obhajuje.",
+    type: "gameMessage",
+    choices: [{
+      text: "Fakt?",
+      nextStep: "discredit_revenge_deny_response_2",
+    }]
+  },
+
+  discredit_revenge_deny_response_2: {
+    text: "Nařčení webu {siteName} se nezakládá na pravdě. Server iROZHLAS.cz pracuje s fakty naprosto standardně.",
+    username: "iROZHLAS",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "discredit_done",
     }]
   },
 
   discredit_revenge_attack: {
-    text: "(zatím konec)",
+    text: "Dobrá volba. Když na protivníka vytáhneme pořádnou špínu, nebude se stačit divit!",
     type: "gameMessage",
     choices: [{
-      text: "Napadnu factcheckera.",
-      nextStep: "discredit_revenge_attack",
+      text: "Dobře!",
+      nextStep: "discredit_revenge_attack_1",
     }]
   },
 
-  factchecker_utok: {
-    text: "O veřejnoprávním Českém rozhlasu a „novinářích“ kteří pro něj pracují se dávno ví, že nám zatajují informace! A to je platíme vlastními penězi! ",
+  discredit_revenge_attack_1: {
+    text: "„Novináři“ z Českého rozhlasu jezdí na luxusní dovolené za NAŠE PENÍZE! Není divu, že skáčou, jak politická korektnost píská!",
+    username: "{siteName}",
     type: "socialPost",
     choices: [{
-      text: "a je to!",
-      nextStep: "factchecker_reakcelidi",
+      text: "Do nich!",
+      nextStep: "discredit_revenge_attack_1_chosen",
+    },{
+      text: "Něco dalšího?",
+      nextStep: "discredit_revenge_attack_2",
     }]
   },
 
-  factchecker_reakcelidi: {
-    text: "nějaký fact checker blabla",
+  discredit_revenge_attack_1_chosen: {
+    text: "Vyvolat závist vždycky zabírá. Naši fanoušci už sdílí příspěvky na naši podporu. Dobrá práce!",
+    type: "gameMessage",
+    choices: [{
+      text: "Co píšou?",
+      nextStep: "discredit_revenge_attack_1_chosen_1",
+    }]
+  },
+
+  discredit_revenge_attack_1_chosen_1: {
+    text: "Na naše děti sbíráme víčka a veřejnoprávní pisálci si žijí jako prasata v žitě? Přispívejme radši na nezávislé projekty jako {siteName}!",
+    username: "Martin Pokorný",
     type: "socialPost",
     choices: [{
-      text: "haha!",
-      nextStep: "badge_manipulace",
+      text: "Pěkné!",
+      nextStep: "discredit_revenge_attack_1_chosen_2",
     }]
   },
 
-  badge_manipulace: {
-    text: "Gratuluji! Podařilo se ti zmanipulovat lidi na internetech. Blabla",
-    type: "gameBadge",
+  discredit_revenge_attack_1_chosen_2: {
+    text: "Český rozhlas pořádá hon na čarodějnice, sám má ale máslo na hlavě! Přesně kvůli tomuhle zvolili Trumpa!",
+    username: "Libuše Nová",
+    type: "socialPost",
     choices: [{
-      text: "Díky!",
+      text: "Ano!",
+      nextStep: "discredit_revenge_attack_response_1",
+    }]
+  },
+
+  discredit_revenge_attack_2: {
+    text: "Tyranie v Českém rozhlase: zaměstnanci si během dvanáctihodinových směn nesmí dojít ani na záchod!",
+    username: "{siteName}",
+    type: "socialPost",
+    choices: [{
+      text: "Do nich!",
+      nextStep: "discredit_revenge_attack_2_chosen",
+    },{
+      text: "Něco dalšího?",
+      nextStep: "discredit_revenge_attack_3",
+    }]
+  },
+
+  discredit_revenge_attack_2_chosen: {
+    text: "Slušná práce. Protivník si vaše obvinění může popírat, jak chce - pravdu by přece stejně nepřiznal.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co na to fanoušci?",
+      nextStep: "discredit_revenge_attack_2_chosen_1",
+    }]
+  },
+
+  discredit_revenge_attack_2_chosen_1: {
+    text: "{siteName} přináší skandální odhalení otřesných pracovních podmínek ve veřejnoprávních médiích. Tam snad psát pravdu ani nejde!",
+    username: "Martin Pokorný",
+    type: "socialPost",
+    choices: [{
+      text: "Pěkné!",
+      nextStep: "discredit_revenge_attack_2_chosen_2",
+    }]
+  },
+
+  discredit_revenge_attack_2_chosen_2: {
+    text: "Český rozhlas připomíná spíš továrnu v Bangladéši. Jen nám místo levného oblečení servírují „informace“.",
+    username: "Libuše Nová",
+    type: "socialPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "discredit_revenge_attack_response_1",
+    }]
+  },
+
+  discredit_revenge_attack_3: {
+    text: "SKANDÁL: Ředitel veřejnoprávního Českého rozhlasu OBĚDVÁ ŠTĚŇÁTKA! Jak můžeme něco takového platit z vlastních kapes?!",
+    username: "{siteName}",
+    type: "socialPost",
+    choices: [{
+      text: "Do nich!",
+      nextStep: "discredit_revenge_attack_3_chosen",
+    },{
+      text: "Něco dalšího?",
+      nextStep: "discredit_revenge_attack_1",
+    }]
+  },
+
+  discredit_revenge_attack_3_chosen: {
+    text: "Tohle vám moc bodů nepřineslo. Na očividné lži většina lidí neskočí. Naštěstí už máte tvrdé jádro fanoušků...",
+    type: "gameMessage",
+    choices: [{
+      text: "Co píšou?",
+      nextStep: "discredit_revenge_attack_3_chosen_1",
+    }]
+  },
+
+  discredit_revenge_attack_3_chosen_1: {
+    text: "Jaká odhalení z veřejnoprávních temnot přijdou teď? Pedofilie? Kanibalismus? Rozhlas i televizi je nutné co nejdříve zestátnit!",
+    username: "Martin Pokorný",
+    type: "socialPost",
+    choices: [{
+      text: "Pěkné!",
+      nextStep: "discredit_revenge_attack_3_chosen_2",
+    }]
+  },
+
+  discredit_revenge_attack_3_chosen_2: {
+    text: "{siteName} opět přichází s fakty, která ostatní zamlčují. Rozhlasu už nevěřím jediné slovo!",
+    username: "Libuše Nová",
+    type: "socialPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "discredit_revenge_attack_response_1",
+    }]
+  },  
+
+  discredit_revenge_attack_response_1: {
+    text: "Naše taktika se vyplatila! Factchecker je najednou v defenzivě a místo útoků se sám obhajuje.",
+    type: "gameMessage",
+    choices: [{
+      text: "Fakt?",
+      nextStep: "discredit_revenge_attack_response_2",
+    }]
+  },
+
+  discredit_revenge_attack_response_2: {
+    text: "Obvinění ze strany webu {siteName} jsou naprosto lživá. Český rozhlas zvažuje právní kroky.",
+    username: "iROZHLAS",
+    type: "socialPost",
+    choices: [{
+      text: "Výborně!",
+      nextStep: "discredit_done",
+    }]
+  },
+
+  discredit_done: {
+    text: "Uhráli jsme to! Dokázal jste zdiskreditovat oponenty a sám u svých příznivců zabodovat.",
+    type: "gameMessage",
+    choices: [{
+      text: "Je to tak!",
+      nextStep: "badge_discredit",
+    }]
+  },
+
+  badge_discredit: {
+    text: "Gratuluji! Podařilo se ti diskreditovat. Blabla",
+    type: "badge",
+    choices: [{
+      text: "Jupí!",
       nextStep: "whatsnext",
     }]
   },
 
   whatsnext: {
     text: "tady to končí",
-    type: "gameBadge",
+    type: "gameMessage",
     choices: [{
       text: "Díky!",
       nextStep: "whatsnext",
