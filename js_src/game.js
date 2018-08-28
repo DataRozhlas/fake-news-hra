@@ -114,7 +114,7 @@ class Game extends React.Component {
       score: 0,
       trust: 10,
       step: "start",
-      //step: "badge_emotion",
+      //step: "polarization_select_1",
       history: [],
       siteName: "Náhradní jméno webu",
       penName: "Náhradní jméno autora"
@@ -182,7 +182,7 @@ class Game extends React.Component {
     const history = this.state.history.map((entry, entryNumber) => {
       return (
         <li key={entryNumber}>
-          {entry}
+          {this.processText(entry)}
         </li>
       );
     });

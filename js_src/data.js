@@ -1425,126 +1425,1308 @@ export const gameData = {
     badge: "emotion",
     choices: [{
       text: "Pokračujeme!",
-      nextStep: "search_fb",
+      nextStep: "polarization_start",
     }]
   },
 
-  search_fb: {
-    text: "(TADY KONČÍ ZREDIGOVANÁ ČÁST) Co takhle kouknout do diskuzí na Facebooku a najít téma, které lidi zajímá",
+  polarization_start: {
+    text: "O {siteName} je zájem! Teď musíme vymyslet, čemu se věnovat dál.",
     type: "gameMessage",
     choices: [{
-      text: "jdu na to!",
-      nextStep: "tipsandtricks",
+      text: "Dobře.",
+      nextStep: "polarization_select"
     }]
-},
+  },
 
-  tipsandtricks: {
-    text: "Jen pár rad předtím, než článek napíšete",
+  polarization_select: {
+    text: "Potřebujeme najít další téma, kterým udržíme naše stávající fanoušky a přilákáme nové. Jak to uděláme?",
     type: "gameMessage",
     choices: [{
-      text: "sem s nimi!",
-      nextStep: "titulek",
+      text: "Něco si vymyslím.",
+      nextStep: "polarization_fake"
+    }, {
+      text: "Najdu téma na kauzu.",
+      nextStep: "polarization_real"
     }]
   },
 
-  titulek: {
-    text: "Exkluzivní! Šokující! VELKÁ PÍSMENA !!!! Nejdůležitější je u článku titulek. Mnohol lidí více nepřečte",
+  polarization_fake: {
+    text: "To není dobrý nápad. Publikování úplně smyšlených zpráv se nemusí vyplatit.",
     type: "gameMessage",
     choices: [{
-      text: "CO DÁL?!!!",
-      nextStep: "foto",
+      text: "Jakto?",
+      nextStep: "polarization_fake2"
     }]
   },
 
-  foto: {
-    text: "---- FOTOMONTÁŽ",
+  polarization_fake2: {
+    text: "Čtenáři vás můžou nachytat při příliš zjevné lži - a vaše těžce budovaná důvěryhodnost bude pryč. Zkusíme to jinak.",
     type: "gameMessage",
     choices: [{
-      text: "přece si to celé nemůžu vymyslet..",
-      nextStep: "zdroj",
+      text: "Jak?",
+      nextStep: "polarization_real"
     }]
   },
 
-    zdroj: {
-        text: "Právě naopak. --- zahraniční dezinformační weby nebo pochybné studie. Ještě jedna důležitá věc než vás na to pustím, mistře",
-        type: "gameMessage",
-        choices: [{
-          text: "rychle!",
-          nextStep: "nalepkovani",
-        }]       
-  },
-
-  nalepkovani: {
-    text: "sluníčkáři, Pražská kavárna, presstituky, Soros! Nebojte se nálepkování",
+  polarization_real: {
+    text: "Vhodný cíl nejlíp najdeme na Facebooku. Stačí se podívat na statusy, které uživatelé sdílí ve velkém. Skandál na sebe nenechá dlouho čekat!",
     type: "gameMessage",
     choices: [{
-      text: "jsem připraven zkusit si to na tématu z diskuze na facebooku!",
-      nextStep: "searchfb_post1",
+      text: "Jdeme na to!",
+      nextStep: "polarization_select_1"
     }]
   },
 
-  searchfb_post1: {
-    text: "Desetiletý chlapec snědl ananas a onemocněl. Když lékaři provedli zdravotní kontrolu zjistili, že má AIDS.",
+  polarization_select_1: {
+    text: "Kamarádka mi říkala, že desetiletý syn její známé snědl ananas a onemocněl. Lékaři pak při kontrole zjistili, že má AIDS!",
+    username: "Honza Novotný",
     type: "socialPost",
     choices: [{
-      text: "dál",
-      nextStep: "searchfb_post2",
+      text: "Perfektní!",
+      nextStep: "polarization_select_1_chosen",
     },{
-        text: "o tomhle napíšu!",
-        nextStep: "post1_publish",
+      text: "Co tam máme dál?",
+      nextStep: "polarization_select_2",
     }]
-},
+  },
 
-searchfb_post2: {
-    text: "Dneska po obědě jsem viděl na hlavním nádraží v Praze 1500 migrantů a MÉDIA MLČÍ!!!",
+  polarization_select_1_chosen: {
+    text: "Skvělá volba! Z Honzova šokujícího příběhu se může stát obří kauza. Stačí správně postupovat.",
+    type: "gameMessage",
+    choices: [{
+      text: "Ale jak?",
+      nextStep: "polarization_select_1_angle"
+    }]
+  },
+
+  polarization_select_1_angle: {
+    text: "Je jasné, že za ananasovou nemoc je někdo zodpovědný. My musíme vybrat, kdo to bude: buď prohnilé ovocnářské korporace, nebo nedostatečně ostražitý stát.",
+    type: "gameMessage",
+    choices: [{
+      text: "Korporace!",
+      nextStep: "polarization_select_1_corp"
+    }, {
+      text: "Stát!",
+      nextStep: "polarization_select_1_state"
+    }]
+  },
+
+  polarization_select_1_corp: {
+    text: "Takže levicový pohled? Proč ne - i když pravicový by fungoval stejně. Hlavní je, že máme úhel, ze kterého můžeme svůj cíl rozdrtit.",
+    type: "gameMessage",
+    choices: [{
+      text: "Dobře.",
+      nextStep: "polarization_select_1_corp_2"
+    }]
+  },
+
+  polarization_select_1_corp_2: {
+    text: "Zbývá kauzu zpracovat v článku a vybrat k němu dostatečně výbušný titulek.",
+    type: "gameMessage",
+    choices: [{
+      text: "No prosím!",
+      nextStep: "polarization_select_1_corp_article_1"
+    }]
+  },
+
+  polarization_select_1_corp_article_1: {
+    text: "Stojí ananasy z dovozu za infekcí HIV? Přední český dovozce tropického ovoce se k případu nemocného chlapce odmítl vyjádřit",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_1_corp_article_1_chosen",
+      scoreChange: 100
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_1_corp_article_2"
+    }]
+  },
+
+  polarization_select_1_corp_article_1_chosen: {
+    text: "Mohl jste klidně být ostřejší, ale dobrá. Čtenáře kauza zaujala. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_1_corp_bots"
+    }]
+  },
+
+  polarization_select_1_corp_article_2: {
+    text: "Neuvěřitelné! Lékaři potvrzují přítomnost HIV v ananasech. Za vším stojí korporace, která vše tutlá!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_1_corp_article_2_chosen",
+      scoreChange: 200
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_1_corp_article_3"
+    }]
+  },
+
+  polarization_select_1_corp_article_2_chosen: {
+    text: "Ostré a dramatické, zároveň podepřené tvrzením autority! Výborně, čtenáři po kauze skáčou. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_1_corp_bots"
+    }]
+  },
+
+  polarization_select_1_corp_article_3: {
+    text: "Do pěti let VYMŘOU naše děti! GMO nestačí, potravinářské korporace nastražily VRAŽEDNÝ virus HIV do ananasů! Máme důkazy o spolčení zbohatlíků z nadnárodních společností!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_1_corp_article_3_chosen",
+      scoreChange: 50
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_1_corp_article_1"
+    }]
+  },
+
+  polarization_select_1_corp_article_3_chosen: {
+    text: "Nepřehánějte! Takhle přefouknutý titulek zaujal jen ty nejparanoidnější čtenáře. To nám rozhodně nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co teď?",
+      nextStep: "polarization_select_1_corp_bots"
+    }]
+  },
+
+  polarization_select_1_corp_bots: {
+    text: "Kauzu teď musíme trochu rozvířit. Použijeme k tomu osvědčenou metodu: falešné uživatelské profily, které můžeme nakoupit a využít k šíření článku.",
+    type: "gameMessage",
+    choices: [{
+      text: "Super nápad!",
+      nextStep: "polarization_select_1_corp_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Je to nutné?",
+      nextStep: "polarization_select_1_corp_bots_no"
+    }]
+  },
+
+  polarization_select_1_corp_bots_no: {
+    text: "Je to nutné. Začal jste s tím, že chcete něco dokázat, ne? Bez trochy popostrčení to zkrátka nepůjde.",
+    type: "gameMessage",
+    choices: [{
+      text: "No dobře...",
+      nextStep: "polarization_select_1_corp_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Ale já nechci!",
+      nextStep: "polarization_select_1_corp_bots_nono"
+    }]
+  },
+
+  polarization_select_1_corp_bots_nono: {
+    text: "Tak podívejte se. Nejsme tady pro legraci a jde nám o vážnou věc. Pokud na to nemáte, skončete, dokud je čas. Nikdo vás tu nedrží.",
+    type: "gameMessage",
+    choices: [{
+      text: "No tak dobře, použijeme falešné účty.",
+      nextStep: "polarization_select_1_corp_bots_yes",
+      scoreChange: 6000
+    }]
+  },
+
+  polarization_select_1_corp_bots_yes: {
+    text: "Výborně! Přibylo vám 6000 fanoušků, kteří už se postarají o to, aby se z Honzova příběhu stala velká kauza. Koukněte, jak článek sdílí mezi své přátele.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "polarization_select_1_corp_bots_fan1"
+    }]
+  },
+
+  polarization_select_1_corp_bots_fan1: {
+    text: "Neskutečná ostuda a ohrožení našich dětí!!! A za všechno může jakási anonymní korporace... ŠIŘTE DÁL!",
+    username: "František Skutečný",
     type: "socialPost",
     choices: [{
-      text: "tohle ne",
-      nextStep: "searchfb_post3"
-    }, {
-      text: "tohle ano",
-      nextStep: "post2_publish",
+      text: "Bezva!",
+      nextStep: "polarization_select_1_corp_bots_fan2"
     }]
   },
 
-  searchfb_post3: {
-    text: "Jsem na dovolené ve Francii a na obloze jsou podivné mraky, kousek od nás je jaderná elektrárna. Nevíte o tom něco?",
+  polarization_select_1_corp_bots_fan2: {
+    text: "Anonymní milardáři z podivných firem na tropických ostrovech si už dovolí fakt všechno. Tohle nám prý chtěli utajit...",
+    username: "Eva Autentická",
     type: "socialPost",
     choices: [{
-      text: "zpátky k ananasu",
-      nextStep: "searchfb_post1"
+      text: "Super!",
+      nextStep: "polarization_select_1_corp_bots_success"
+    }]
+  },
+
+  polarization_select_1_corp_bots_success: {
+    text: "To vypadá slibně! Podíváme, jak se na naši akci chytili skuteční lidé.",
+    type: "gameMessage",
+    choices: [{
+      text: "Hmm...",
+      nextStep: "polarization_select_1_corp_bots_fan3"
+    }]
+  },
+
+  polarization_select_1_corp_bots_fan3: {
+    text: "O téhle firmě jsem dodneška neslyšel. Prý vyprodukuje nejvíc ovoce na světě - a teď se ukázalo, že v jejích ananasech je HIV. Vůbec mě to nepřekvapuje...",
+    username: "Jiří Vlivník",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_1_corp_bots_fan4"
+    }]
+  },
+
+  polarization_select_1_corp_bots_fan4: {
+    text: "Když mi to vyprávěla kamarádka, nevěřila jsem, a tady je to černé na bílém. To se budeme kvůli všemocným korporacím bát jíst ovoce?",
+    username: "Zuzana Líčivá - youtuberka",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_1_corp_bots_end"
+    }]
+  },
+
+  polarization_select_1_corp_bots_end: {
+    text: "Další povedená akce. O skandálu díky našim nakoupeným profilům mluví i takzvaní influenceři, lidé, kteří mají na sociálních sítích velký dosah.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zase jsem to dokázal!",
+      nextStep: "badge_polarization"
+    }]
+  },
+
+  polarization_select_1_state: {
+      text: "Takže pravicový pohled? Proč ne - i když levicový by fungoval stejně. Hlavní je, že máme úhel, ze kterého můžeme svůj cíl rozdrtit.",
+      type: "gameMessage",
+      choices: [{
+        text: "Dobře.",
+        nextStep: "polarization_select_1_state_2"
+      }]
+    },
+
+  polarization_select_1_state_2: {
+    text: "Zbývá kauzu zpracovat v článku a vybrat k němu dostatečně výbušný titulek.",
+    type: "gameMessage",
+    choices: [{
+      text: "No prosím!",
+      nextStep: "polarization_select_1_state_article_1"
+    }]
+  },
+
+  polarization_select_1_state_article_1: {
+    text: "Stojí ananasy z dovozu za infekcí HIV? Česká potravinářská komora se k případu nemocného chlapce odmítla vyjádřit",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_1_state_article_1_chosen",
+      scoreChange: 100
     }, {
-      text: "tohle je to pravé",
-      nextStep: "post3_publish",
+      text: "Raději jinak.",
+      nextStep: "polarization_select_1_state_article_2"
     }]
   },
 
-  post1_publish: {
-    text: "článek o 1",
-    type: "webPost",
+  polarization_select_1_state_article_1_chosen: {
+    text: "Mohl jste klidně být ostřejší, ale dobrá. Čtenáře kauza zaujala. To nám ale nestačí.",
+    type: "gameMessage",
     choices: [{
-      text: "vydat na web!",
-      nextStep: "problem",
+      text: "Jakto?",
+      nextStep: "polarization_select_1_state_bots"
     }]
   },
 
-  post2_publish: {
-    text: "článek o 2",
+  polarization_select_1_state_article_2: {
+    text: "Tak tohle vám vláda tají. Lékaři ukázali, že ananasy obsahují HIV! Okamžitý zákaz? Ani náhodou!",
+    webName: "{siteName}",
     type: "webPost",
     choices: [{
-      text: "vydat na web",
-      nextStep: "problem",
+      text: "Ano!",
+      nextStep: "polarization_select_1_state_article_2_chosen",
+      scoreChange: 200
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_1_state_article_3"
     }]
   },
 
-  post3_publish: {
-    text: "Nad Evropou se valí radioaktivní mrak pocházející zřejmě z podivné exploze ve francouzské jaderné elektrárně. Vlády mlčí, Francie se snaží bagatelizovat celý incident slovy o neškodnosti radionuklidů a my doporučujeme nakoupit okamžitě jódové tablety a dozimetry!",
+  polarization_select_1_state_article_2_chosen: {
+    text: "Ostré a dramatické, zároveň podepřené tvrzením autority! Výborně, čtenáři po kauze skáčou. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_1_state_bots"
+    }]
+  },
+
+  polarization_select_1_state_article_3: {
+    text: "Do pěti let VYMŘOU naše děti! Vláda nastražila VRAŽEDNÝ virus HIV do milovaných ananasů! Tak takhle chtějí ušetřit na školství?!",
+    webName: "{siteName}",
     type: "webPost",
     choices: [{
-      text: "zveřejnit!",
-      nextStep: "problem",
+      text: "Ano!",
+      nextStep: "polarization_select_1_state_article_3_chosen",
+      scoreChange: 50
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_1_state_article_1"
     }]
-  }, 
+  },
+
+  polarization_select_1_state_article_3_chosen: {
+    text: "Nepřehánějte! Takhle přefouknutý titulek zaujal jen ty nejparanoidnější čtenáře. To nám rozhodně nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co teď?",
+      nextStep: "polarization_select_1_state_bots"
+    }]
+  },
+
+  polarization_select_1_state_bots: {
+    text: "Kauzu teď musíme trochu rozvířit. Použijeme k tomu osvědčenou metodu: falešné uživatelské profily, které můžeme nakoupit a využít k šíření článku.",
+    type: "gameMessage",
+    choices: [{
+      text: "Super nápad!",
+      nextStep: "polarization_select_1_state_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Je to nutné?",
+      nextStep: "polarization_select_1_state_bots_no"
+    }]
+  },
+
+  polarization_select_1_state_bots_no: {
+    text: "Je to nutné. Začal jste s tím, že chcete něco dokázat, ne? Bez trochy popostrčení to zkrátka nepůjde.",
+    type: "gameMessage",
+    choices: [{
+      text: "No dobře...",
+      nextStep: "polarization_select_1_state_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Ale já nechci!",
+      nextStep: "polarization_select_1_state_bots_nono"
+    }]
+  },
+
+  polarization_select_1_state_bots_nono: {
+    text: "Tak podívejte se. Nejsme tady pro legraci a jde nám o vážnou věc. Pokud na to nemáte, skončete, dokud je čas. Nikdo vás tu nedrží.",
+    type: "gameMessage",
+    choices: [{
+      text: "No tak dobře, použijeme falešné účty.",
+      nextStep: "polarization_select_1_state_bots_yes",
+      scoreChange: 6000
+    }]
+  },
+
+  polarization_select_1_state_bots_yes: {
+    text: "Výborně! Přibylo vám 6000 fanoušků, kteří už se postarají o to, aby se z Honzova příběhu stala velká kauza. Koukněte, jak článek sdílí mezi své přátele.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "polarization_select_1_state_bots_fan1"
+    }]
+  },
+
+  polarization_select_1_state_bots_fan1: {
+    text: "Neskutečná ostuda a ohrožení našich dětí!!! A naše skvělá vláda dělá jakoby nic... ŠIŘTE DÁL!",
+    username: "František Skutečný",
+    type: "socialPost",
+    choices: [{
+      text: "Bezva!",
+      nextStep: "polarization_select_1_state_bots_fan2"
+    }]
+  },
+
+  polarization_select_1_state_bots_fan2: {
+    text: "Ti naši politici už si dovolí fakt všechno. Tohle nám prý chtěli utajit...",
+    username: "Eva Autentická",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_1_state_bots_success"
+    }]
+  },
+
+  polarization_select_1_state_bots_success: {
+    text: "To vypadá slibně! Podíváme, jak se na naši akci chytili skuteční lidé.",
+    type: "gameMessage",
+    choices: [{
+      text: "Hmm...",
+      nextStep: "polarization_select_1_state_bots_fan3"
+    }]
+  },
+
+  polarization_select_1_state_bots_fan3: {
+    text: "Tak ananasy jsou prý nakaženy HIV a vláda s tím nic nedělá. Když vidím, co každý den předvádí, vůbec mě to nepřekvapuje...",
+    username: "Jiří Vlivník",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_1_state_bots_fan4"
+    }]
+  },
+
+  polarization_select_1_state_bots_fan4: {
+    text: "Když mi to vyprávěla kamarádka, nevěřila jsem, a tady je to černé na bílém. To se budeme kvůli neschopným ministrům bát jíst ovoce?",
+    username: "Zuzana Líčivá - youtuberka",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_1_state_bots_end"
+    }]
+  },
+
+  polarization_select_1_state_bots_end: {
+    text: "Další povedená akce. O skandálu díky našim nakoupeným profilům mluví i takzvaní influenceři, lidé, kteří mají na sociálních sítích velký dosah.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zase jsem to dokázal!",
+      nextStep: "badge_polarization"
+    }]
+  },
+
+  polarization_select_2: {
+    text: "Dneska po obědě jsem na hlavním nádraží v Praze viděla vlak plný migrantů, bylo jich tam snad 1500. A MÉDIA MLČÍ!!!",
+    username: "Martina Nováková",
+    type: "socialPost",
+    choices: [{
+      text: "Perfektní!",
+      nextStep: "polarization_select_2_chosen",
+    },{
+      text: "Co tam máme dál?",
+      nextStep: "polarization_select_3",
+    }]
+  },
+
+  polarization_select_2_chosen: {
+    text: "Skvělá volba! Martinino svědectví může rozdmýchat velký skandál. Stačí ho správně podat.",
+    type: "gameMessage",
+    choices: [{
+      text: "Ale jak?",
+      nextStep: "polarization_select_2_angle"
+    }]
+  },
+
+  polarization_select_2_angle: {
+    text: "Za vlak plný migrantů je někoho potřeba hnát k zodpovědnosti. Na nás je, kdo to bude: buď vítačské neziskovky, nebo prolhaná vláda.",
+    type: "gameMessage",
+    choices: [{
+      text: "Neziskovky!",
+      nextStep: "polarization_select_2_ngo"
+    }, {
+      text: "Vláda!",
+      nextStep: "polarization_select_2_gov"
+    }]
+  },
+
+  polarization_select_2_ngo: {
+    text: "Takže provládní pohled? Proč ne - i když protivládní by fungoval stejně. Hlavní je, že máme úhel, ze kterého můžeme svůj cíl rozdrtit.",
+    type: "gameMessage",
+    choices: [{
+      text: "Dobře.",
+      nextStep: "polarization_select_2_ngo_2"
+    }]
+  },
+
+  polarization_select_2_ngo_2: {
+    text: "Zbývá kauzu zpracovat v článku a vybrat k němu dostatečně výbušný titulek.",
+    type: "gameMessage",
+    choices: [{
+      text: "No prosím!",
+      nextStep: "polarization_select_2_ngo_article_1"
+    }]
+  },
+
+  polarization_select_2_ngo_article_1: {
+    text: "Na pražském nádraží se pohybují stovky lidí neevropského původu. Co na to vítači z neziskovek?",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_2_ngo_article_1_chosen",
+      scoreChange: 100
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_2_ngo_article_2"
+    }]
+  },
+
+  polarization_select_2_ngo_article_1_chosen: {
+    text: "Mohl jste klidně být ostřejší, ale dobrá. Čtenáře kauza zaujala. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_2_ngo_bots"
+    }]
+  },
+
+  polarization_select_2_ngo_article_2: {
+    text: "UŽ JSOU TADY: Migranti se valí do Prahy. Práce vlastizrádců placených z našich daní nese ovoce! Zjistili jsme, jak ilegálové díky neziskovkám získávají azyl",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_2_ngo_article_2_chosen",
+      scoreChange: 200
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_2_ngo_article_3"
+    }]
+  },
+
+  polarization_select_2_ngo_article_2_chosen: {
+    text: "Ostré a dramatické, zároveň podepřené vlastním „zjištěním“! Výborně, čtenáři po kauze skáčou. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_2_ngo_bots"
+    }]
+  },
+
+  polarization_select_2_ngo_article_3: {
+    text: "TEROR V PRAZE!!! Na nádraží vzniká malý Islámský stát: Sluníčkářské poběhlice z neziskovek se VDÁVAJÍ ZA ILEGÁLY přímo na nástupištích!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_2_ngo_article_3_chosen",
+      scoreChange: 50
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_2_ngo_article_1"
+    }]
+  },
+
+  polarization_select_2_ngo_article_3_chosen: {
+    text: "Nepřehánějte! Takhle přefouknutý titulek zaujal jen ty nejparanoidnější čtenáře. To nám rozhodně nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co teď?",
+      nextStep: "polarization_select_2_ngo_bots"
+    }]
+  },
+
+  polarization_select_2_ngo_bots: {
+    text: "Kauzu teď musíme trochu rozvířit. Použijeme k tomu osvědčenou metodu: falešné uživatelské profily, které můžeme nakoupit a využít k šíření článku.",
+    type: "gameMessage",
+    choices: [{
+      text: "Super nápad!",
+      nextStep: "polarization_select_2_ngo_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Je to nutné?",
+      nextStep: "polarization_select_2_ngo_bots_no"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_no: {
+    text: "Je to nutné. Začal jste s tím, že chcete něco dokázat, ne? Bez trochy popostrčení to zkrátka nepůjde.",
+    type: "gameMessage",
+    choices: [{
+      text: "No dobře...",
+      nextStep: "polarization_select_2_ngo_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Ale já nechci!",
+      nextStep: "polarization_select_2_ngo_bots_nono"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_nono: {
+    text: "Tak podívejte se. Nejsme tady pro legraci a jde nám o vážnou věc. Pokud na to nemáte, skončete, dokud je čas. Nikdo vás tu nedrží.",
+    type: "gameMessage",
+    choices: [{
+      text: "No tak dobře, použijeme falešné účty.",
+      nextStep: "polarization_select_2_ngo_bots_yes",
+      scoreChange: 6000
+    }]
+  },
+
+  polarization_select_2_ngo_bots_yes: {
+    text: "Výborně! Přibylo vám 6000 fanoušků, kteří už se postarají o to, aby se z Honzova příběhu stala velká kauza. Koukněte, jak článek sdílí mezi své přátele.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "polarization_select_2_ngo_bots_fan1"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_fan1: {
+    text: "Národ je v ohrožení! Dílo neziskovek je dokonáno, valí se sem stovky migrantů. Sdílejte!",
+    username: "František Skutečný",
+    type: "socialPost",
+    choices: [{
+      text: "Bezva!",
+      nextStep: "polarization_select_2_ngo_bots_fan2"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_fan2: {
+    text: "Přivandrovalci přímo v Praze?! Kdy už půjdou vítači a pseudohumanisti konečně sedět??",
+    username: "Eva Autentická",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_2_ngo_bots_success"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_success: {
+    text: "To vypadá slibně! Podíváme, jak se na naši akci chytili skuteční lidé.",
+    type: "gameMessage",
+    choices: [{
+      text: "Hmm...",
+      nextStep: "polarization_select_2_ngo_bots_fan3"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_fan3: {
+    text: "Podle očitého svědectví přijel na pozvání neziskovek plný vlak migrantů. Nejsem pro nulovou toleranci, ale co je moc, to je moc...",
+    username: "Jiří Vlivník",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_2_ngo_bots_fan4"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_fan4: {
+    text: "Už mi kvůli tomu volal kamarád. Je to úplně šílené, okamžitě sebrat aktivistům peníze!",
+    username: "Zuzana Líčivá - youtuberka",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_2_ngo_bots_end"
+    }]
+  },
+
+  polarization_select_2_ngo_bots_end: {
+    text: "Další povedená akce. O skandálu díky našim nakoupeným profilům mluví i takzvaní influenceři, lidé, kteří mají na sociálních sítích velký dosah.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zase jsem to dokázal!",
+      nextStep: "badge_polarization"
+    }]
+  },
+
+  polarization_select_2_gov: {
+    text: "Takže protivládní pohled? Proč ne - i když provládní by fungoval stejně. Hlavní je, že máme úhel, ze kterého můžeme svůj cíl rozdrtit.",
+    type: "gameMessage",
+    choices: [{
+      text: "Dobře.",
+      nextStep: "polarization_select_2_gov_2"
+    }]
+  },
+
+  polarization_select_2_gov_2: {
+    text: "Zbývá kauzu zpracovat v článku a vybrat k němu dostatečně výbušný titulek.",
+    type: "gameMessage",
+    choices: [{
+      text: "No prosím!",
+      nextStep: "polarization_select_2_gov_article_1"
+    }]
+  },
+
+  polarization_select_2_gov_article_1: {
+    text: "Na pražském nádraží se pohybují stovky lidí neevropského původu. Vláda přitom slibovala nulovou toleranci",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_2_gov_article_1_chosen",
+      scoreChange: 100
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_2_gov_article_2"
+    }]
+  },
+
+  polarization_select_2_gov_article_1_chosen: {
+    text: "Mohl jste klidně být ostřejší, ale dobrá. Čtenáře kauza zaujala. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_2_gov_bots"
+    }]
+  },
+
+  polarization_select_2_gov_article_2: {
+    text: "UŽ JSOU TADY! Migranti se valí do Prahy. Zjistili jsme, jak ilegálové získávají azyl: s tichým souhlasem vlády!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_2_gov_article_2_chosen",
+      scoreChange: 200
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_2_gov_article_3"
+    }]
+  },
+
+  polarization_select_2_gov_article_2_chosen: {
+    text: "Ostré a dramatické, zároveň podepřené vlastním „zjištěním“! Výborně, čtenáři po kauze skáčou. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_2_gov_bots"
+    }]
+  },
+
+  polarization_select_2_gov_article_3: {
+    text: "TO JSTE NEMĚLI VĚDĚT: Do Prahy přivandrovaly TISÍCE MIGRANTŮ! Pozvala je česká vláda za TAJNÉ DOTACE z Evropské unie. Čekají je vládní byty a život bez práce!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_2_gov_article_3_chosen",
+      scoreChange: 50
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_2_gov_article_1"
+    }]
+  },
+
+  polarization_select_2_gov_article_3_chosen: {
+    text: "Nepřehánějte! Takhle přefouknutý titulek zaujal jen ty nejparanoidnější čtenáře. To nám rozhodně nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co teď?",
+      nextStep: "polarization_select_2_gov_bots"
+    }]
+  },
+
+  polarization_select_2_gov_bots: {
+    text: "Kauzu teď musíme trochu rozvířit. Použijeme k tomu osvědčenou metodu: falešné uživatelské profily, které můžeme nakoupit a využít k šíření článku.",
+    type: "gameMessage",
+    choices: [{
+      text: "Super nápad!",
+      nextStep: "polarization_select_2_gov_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Je to nutné?",
+      nextStep: "polarization_select_2_gov_bots_no"
+    }]
+  },
+
+  polarization_select_2_gov_bots_no: {
+    text: "Je to nutné. Začal jste s tím, že chcete něco dokázat, ne? Bez trochy popostrčení to zkrátka nepůjde.",
+    type: "gameMessage",
+    choices: [{
+      text: "No dobře...",
+      nextStep: "polarization_select_2_gov_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Ale já nechci!",
+      nextStep: "polarization_select_2_gov_bots_nono"
+    }]
+  },
+
+  polarization_select_2_gov_bots_nono: {
+    text: "Tak podívejte se. Nejsme tady pro legraci a jde nám o vážnou věc. Pokud na to nemáte, skončete, dokud je čas. Nikdo vás tu nedrží.",
+    type: "gameMessage",
+    choices: [{
+      text: "No tak dobře, použijeme falešné účty.",
+      nextStep: "polarization_select_2_gov_bots_yes",
+      scoreChange: 6000
+    }]
+  },
+
+  polarization_select_2_gov_bots_yes: {
+    text: "Výborně! Přibylo vám 6000 fanoušků, kteří už se postarají o to, aby se z Honzova příběhu stala velká kauza. Koukněte, jak článek sdílí mezi své přátele.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "polarization_select_2_gov_bots_fan1"
+    }]
+  },
+
+  polarization_select_2_gov_bots_fan1: {
+    text: "Národ je v ohrožení! Vláda, která nás měla ochránit, selhala. Valí se sem stovky migrantů. Sdílejte!",
+    username: "František Skutečný",
+    type: "socialPost",
+    choices: [{
+      text: "Bezva!",
+      nextStep: "polarization_select_2_gov_bots_fan2"
+    }]
+  },
+
+  polarization_select_2_gov_bots_fan2: {
+    text: "Přivandrovalci přímo v Praze?! Politici slibovali nepřijmout jediného uprchlíka! Pryč s vládou!",
+    username: "Eva Autentická",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_2_gov_bots_success"
+    }]
+  },
+
+  polarization_select_2_gov_bots_success: {
+    text: "To vypadá slibně! Podíváme, jak se na naši akci chytili skuteční lidé.",
+    type: "gameMessage",
+    choices: [{
+      text: "Hmm...",
+      nextStep: "polarization_select_2_gov_bots_fan3"
+    }]
+  },
+
+  polarization_select_2_gov_bots_fan3: {
+    text: "Podle očitého svědectví přijel na pozvání vlády plný vlak migrantů. Nejsem pro nulovou toleranci, ale sliby se mají plnit...",
+    username: "Jiří Vlivník",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_2_gov_bots_fan4"
+    }]
+  },
+
+  polarization_select_2_gov_bots_fan4: {
+    text: "Už mi kvůli tomu volal kamarád. Je to úplně šílené, musíme vyrazit demonstrovat!",
+    username: "Zuzana Líčivá - youtuberka",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_2_gov_bots_end"
+    }]
+  },
+
+  polarization_select_2_gov_bots_end: {
+    text: "Další povedená akce. O skandálu díky našim nakoupeným profilům mluví i takzvaní influenceři, lidé, kteří mají na sociálních sítích velký dosah.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zase jsem to dokázal!",
+      nextStep: "badge_polarization"
+    }]
+  },
+
+  polarization_select_3: {
+    text: "Jsem na dovolené ve Francii a na obloze jsou podivné mraky. Kousek od nás je jaderná elektrárna. Nevíte o tom něco?",
+    username: "Petra Horáková",
+    type: "socialPost",
+    choices: [{
+      text: "Perfektní!",
+      nextStep: "polarization_select_3_chosen",
+    },{
+      text: "Co tam máme dál?",
+      nextStep: "polarization_select_1",
+    }]
+  },
+
+  polarization_select_3_chosen: {
+    text: "Výborná volba! Petřino podezření může způsobit mezinárodní skandál. Stačí ho správně uchopit.",
+    type: "gameMessage",
+    choices: [{
+      text: "Ale jak?",
+      nextStep: "polarization_select_3_angle"
+    }]
+  },
+
+  polarization_select_3_angle: {
+    text: "Z hrozící jaderné katastrofy je nutné někoho obvinit - v tomhle případě stát. Můžeme to udělat buď proto, že ještě nezakázal jaderné elektrárny, nebo protože je nesvěřil do rukou kompetentním firmám.",
+    type: "gameMessage",
+    choices: [{
+      text: "Měl je zakázat!",
+      nextStep: "polarization_select_3_left"
+    }, {
+      text: "Měl je privatizovat!",
+      nextStep: "polarization_select_3_right"
+    }]
+  },
+
+  polarization_select_3_left: {
+    text: "Takže levicový pohled? Proč ne - i když pravicový by fungoval stejně. Hlavní je, že máme úhel, ze kterého můžeme svůj cíl rozdrtit.",
+    type: "gameMessage",
+    choices: [{
+      text: "Dobře.",
+      nextStep: "polarization_select_3_left_2"
+    }]
+  },
+
+  polarization_select_3_left_2: {
+    text: "Zbývá kauzu zpracovat v článku a vybrat k němu dostatečně výbušný titulek.",
+    type: "gameMessage",
+    choices: [{
+      text: "No prosím!",
+      nextStep: "polarization_select_3_left_article_1"
+    }]
+  },
+
+  polarization_select_3_left_article_1: {
+    text: "Pět zraněných po výbuchu jaderné elektrárny na západě Francie. Kdy skoncujeme s atomovým nebezpečím?",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_3_left_article_1_chosen",
+      scoreChange: 100
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_3_left_article_2"
+    }]
+  },
+
+  polarization_select_3_left_article_1_chosen: {
+    text: "Mohl jste klidně být ostřejší, ale dobrá. Čtenáře kauza zaujala. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_3_left_bots"
+    }]
+  },
+
+  polarization_select_3_left_article_2: {
+    text: "Černobyl, Fukušima, Provence? Jaderná hrozba nad slunnou Francií. Odborníci varují, svět neposlouchá",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_3_left_article_2_chosen",
+      scoreChange: 200
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_3_left_article_3"
+    }]
+  },
+
+  polarization_select_3_left_article_2_chosen: {
+    text: "Ostré a dramatické, zároveň podepřené postojem autority! Výborně, čtenáři po kauze skáčou. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_3_left_bots"
+    }]
+  },
+
+  polarization_select_3_left_article_3: {
+    text: "Nad Evropou se valí RADIOAKTIVNÍ MRAK! Příčinou je záhadná EXPLOZE ve francouzské jaderné elektrárně. Vlády mlčí, okamžitě kupujte jódové tablety!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_3_left_article_3_chosen",
+      scoreChange: 50
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_3_left_article_1"
+    }]
+  },
+
+  polarization_select_3_left_article_3_chosen: {
+    text: "Nepřehánějte! Takhle přefouknutý titulek zaujal jen ty nejparanoidnější čtenáře. To nám rozhodně nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co teď?",
+      nextStep: "polarization_select_3_left_bots"
+    }]
+  },
+
+  polarization_select_3_left_bots: {
+    text: "Kauzu teď musíme trochu rozvířit. Použijeme k tomu osvědčenou metodu: falešné uživatelské profily, které můžeme nakoupit a využít k šíření článku.",
+    type: "gameMessage",
+    choices: [{
+      text: "Super nápad!",
+      nextStep: "polarization_select_3_left_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Je to nutné?",
+      nextStep: "polarization_select_3_left_bots_no"
+    }]
+  },
+
+  polarization_select_3_left_bots_no: {
+    text: "Je to nutné. Začal jste s tím, že chcete něco dokázat, ne? Bez trochy popostrčení to zkrátka nepůjde.",
+    type: "gameMessage",
+    choices: [{
+      text: "No dobře...",
+      nextStep: "polarization_select_3_left_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Ale já nechci!",
+      nextStep: "polarization_select_3_left_bots_nono"
+    }]
+  },
+
+  polarization_select_3_left_bots_nono: {
+    text: "Tak podívejte se. Nejsme tady pro legraci a jde nám o vážnou věc. Pokud na to nemáte, skončete, dokud je čas. Nikdo vás tu nedrží.",
+    type: "gameMessage",
+    choices: [{
+      text: "No tak dobře, použijeme falešné účty.",
+      nextStep: "polarization_select_3_left_bots_yes",
+      scoreChange: 6000
+    }]
+  },
+
+  polarization_select_3_left_bots_yes: {
+    text: "Výborně! Přibylo vám 6000 fanoušků, kteří už se postarají o to, aby se z Honzova příběhu stala velká kauza. Koukněte, jak článek sdílí mezi své přátele.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "polarization_select_3_left_bots_fan1"
+    }]
+  },
+
+  polarization_select_3_left_bots_fan1: {
+    text: "Lidstvo mělo s jadernou hrozbou dávno skoncovat. Vlády musí okamžitě jednat!",
+    username: "František Skutečný",
+    type: "socialPost",
+    choices: [{
+      text: "Bezva!",
+      nextStep: "polarization_select_3_left_bots_fan2"
+    }]
+  },
+
+  polarization_select_3_left_bots_fan2: {
+    text: "Když se radioaktivní energie nezbavíme, zahubí Evropu. Ve Francii už to začalo!",
+    username: "Eva Autentická",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_3_left_bots_success"
+    }]
+  },
+
+  polarization_select_3_left_bots_success: {
+    text: "To vypadá slibně! Podíváme, jak se na naši akci chytili skuteční lidé.",
+    type: "gameMessage",
+    choices: [{
+      text: "Hmm...",
+      nextStep: "polarization_select_3_left_bots_fan3"
+    }]
+  },
+
+  polarization_select_3_left_bots_fan3: {
+    text: "Na jaderné elektrárny jsem neměl jasný názor, ale svědectví z Francie ukazuje, jak jsou nebezpečné. Posuďte sami...",
+    username: "Jiří Vlivník",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_3_left_bots_fan4"
+    }]
+  },
+
+  polarization_select_3_left_bots_fan4: {
+    text: "Opravdu kousek od našich domovů stavíme ničivé továrny na jaderné exploze? Tahle civilizace se zlikviduje sama!",
+    username: "Zuzana Líčivá - youtuberka",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_3_left_bots_end"
+    }]
+  },
+
+  polarization_select_3_left_bots_end: {
+    text: "Další povedená akce. O skandálu díky našim nakoupeným profilům mluví i takzvaní influenceři, lidé, kteří mají na sociálních sítích velký dosah.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zase jsem to dokázal!",
+      nextStep: "badge_polarization"
+    }]
+  },
+
+  polarization_select_3_right: {
+    text: "Takže pravicový pohled? Proč ne - i když levicový by fungoval stejně. Hlavní je, že máme úhel, ze kterého můžeme svůj cíl rozdrtit.",
+    type: "gameMessage",
+    choices: [{
+      text: "Dobře.",
+      nextStep: "polarization_select_3_right_2"
+    }]
+  },
+
+  polarization_select_3_right_2: {
+    text: "Zbývá kauzu zpracovat v článku a vybrat k němu dostatečně výbušný titulek.",
+    type: "gameMessage",
+    choices: [{
+      text: "No prosím!",
+      nextStep: "polarization_select_3_right_article_1"
+    }]
+  },
+
+  polarization_select_3_right_article_1: {
+    text: "Pět zraněných po výbuchu jaderné elektrárny na západě Francie. Důsledek energetiky pod kontrolou neschopného státu",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_3_right_article_1_chosen",
+      scoreChange: 100
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_3_right_article_2"
+    }]
+  },
+
+  polarization_select_3_right_article_1_chosen: {
+    text: "Mohl jste klidně být ostřejší, ale dobrá. Čtenáře kauza zaujala. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_3_right_bots"
+    }]
+  },
+
+  polarization_select_3_right_article_2: {
+    text: "Černobyl, Fukušima, Provence? Jaderná hrozba nad slunnou Francií. Co vše způsobí nukleární síla v rukou politiků?!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_3_right_article_2_chosen",
+      scoreChange: 200
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_3_right_article_3"
+    }]
+  },
+
+  polarization_select_3_right_article_2_chosen: {
+    text: "Ostré a dramatické, zároveň podepřené postojem autority! Výborně, čtenáři po kauze skáčou. To nám ale nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Jakto?",
+      nextStep: "polarization_select_3_right_bots"
+    }]
+  },
+
+  polarization_select_3_right_article_3: {
+    text: "Nad Evropou se valí RADIOAKTIVNÍ MRAK! Příčinou je záhadná EXPLOZE ve francouzské jaderné elektrárně. Vlády mlčí, okamžitě kupujte jódové tablety!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Ano!",
+      nextStep: "polarization_select_3_right_article_3_chosen",
+      scoreChange: 50
+    }, {
+      text: "Raději jinak.",
+      nextStep: "polarization_select_3_right_article_1"
+    }]
+  },
+
+  polarization_select_3_right_article_3_chosen: {
+    text: "Nepřehánějte! Takhle přefouknutý titulek zaujal jen ty nejparanoidnější čtenáře. To nám rozhodně nestačí.",
+    type: "gameMessage",
+    choices: [{
+      text: "Co teď?",
+      nextStep: "polarization_select_3_right_bots"
+    }]
+  },
+
+  polarization_select_3_right_bots: {
+    text: "Kauzu teď musíme trochu rozvířit. Použijeme k tomu osvědčenou metodu: falešné uživatelské profily, které můžeme nakoupit a využít k šíření článku.",
+    type: "gameMessage",
+    choices: [{
+      text: "Super nápad!",
+      nextStep: "polarization_select_3_right_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Je to nutné?",
+      nextStep: "polarization_select_3_right_bots_no"
+    }]
+  },
+
+  polarization_select_3_right_bots_no: {
+    text: "Je to nutné. Začal jste s tím, že chcete něco dokázat, ne? Bez trochy popostrčení to zkrátka nepůjde.",
+    type: "gameMessage",
+    choices: [{
+      text: "No dobře...",
+      nextStep: "polarization_select_3_right_bots_yes",
+      scoreChange: 6000
+    }, {
+      text: "Ale já nechci!",
+      nextStep: "polarization_select_3_right_bots_nono"
+    }]
+  },
+
+  polarization_select_3_right_bots_nono: {
+    text: "Tak podívejte se. Nejsme tady pro legraci a jde nám o vážnou věc. Pokud na to nemáte, skončete, dokud je čas. Nikdo vás tu nedrží.",
+    type: "gameMessage",
+    choices: [{
+      text: "No tak dobře, použijeme falešné účty.",
+      nextStep: "polarization_select_3_right_bots_yes",
+      scoreChange: 6000
+    }]
+  },
+
+  polarization_select_3_right_bots_yes: {
+    text: "Výborně! Přibylo vám 6000 fanoušků, kteří už se postarají o to, aby se z Honzova příběhu stala velká kauza. Koukněte, jak článek sdílí mezi své přátele.",
+    type: "gameMessage",
+    choices: [{
+      text: "OK",
+      nextStep: "polarization_select_3_right_bots_fan1"
+    }]
+  },
+
+  polarization_select_3_right_bots_fan1: {
+    text: "Důsledek socialismu ve všech oblastech lidského života. Vlády musí privatizovat výrobu energie!",
+    username: "František Skutečný",
+    type: "socialPost",
+    choices: [{
+      text: "Bezva!",
+      nextStep: "polarization_select_3_right_bots_fan2"
+    }]
+  },
+
+  polarization_select_3_right_bots_fan2: {
+    text: "Když radioaktivní energii neosvobodíme, zahubí Evropu. Francie potřebuje více kapitalismu!",
+    username: "Eva Autentická",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_3_right_bots_success"
+    }]
+  },
+
+  polarization_select_3_right_bots_success: {
+    text: "To vypadá slibně! Podíváme, jak se na naši akci chytili skuteční lidé.",
+    type: "gameMessage",
+    choices: [{
+      text: "Hmm...",
+      nextStep: "polarization_select_3_right_bots_fan3"
+    }]
+  },
+
+  polarization_select_3_right_bots_fan3: {
+    text: "Na jaderné elektrárny jsem neměl jasný názor, ale svědectví z Francie ukazuje, jak jsou nebezpečné, když na ně dohlíží nefunkční stát. Posuďte sami...",
+    username: "Jiří Vlivník",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_3_right_bots_fan4"
+    }]
+  },
+
+  polarization_select_3_right_bots_fan4: {
+    text: "Opravdu necháváme naše politiky dohlížet na ničivé továrny na jaderné exploze? Tahle civilizace se zlikviduje sama!",
+    username: "Zuzana Líčivá - youtuberka",
+    type: "socialPost",
+    choices: [{
+      text: "Super!",
+      nextStep: "polarization_select_3_right_bots_end"
+    }]
+  },
+
+  polarization_select_3_right_bots_end: {
+    text: "Další povedená akce. O skandálu díky našim nakoupeným profilům mluví i takzvaní influenceři, lidé, kteří mají na sociálních sítích velký dosah.",
+    type: "gameMessage",
+    choices: [{
+      text: "Zase jsem to dokázal!",
+      nextStep: "badge_polarization"
+    }]
+  },  
+
+  badge_polarization: {
+    text: "Gratuluji! Podařilo se ti zpolarizovat debatu. Blabla",
+    type: "badge",
+    choices: [{
+      text: "Díky! Zatím konec",
+      nextStep: "badge_polarization",
+    }]
+  },
 
   problem: {
     text: "Máme problém",
