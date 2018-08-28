@@ -114,7 +114,7 @@ class Game extends React.Component {
       score: 0,
       trust: 10,
       step: "start",
-      //step: "polarization_select_1",
+      //step: "badge_polarization",
       history: [],
       siteName: "Náhradní jméno webu",
       penName: "Náhradní jméno autora"

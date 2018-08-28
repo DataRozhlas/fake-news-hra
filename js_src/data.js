@@ -2723,59 +2723,219 @@ export const gameData = {
     text: "Gratuluji! Podařilo se ti zpolarizovat debatu. Blabla",
     type: "badge",
     choices: [{
-      text: "Díky! Zatím konec",
-      nextStep: "badge_polarization",
+      text: "Díky! Teď discredit",
+      nextStep: "discredit",
     }]
   },
 
-  problem: {
-    text: "Máme problém",
-    type: "webMessage",
+  discredit: {
+    text: "Máme tu drobný problém.",
+    type: "gameMessage",
     choices: [{
-      text: "nemám rád problémy",
-      nextStep: "problem_explain",
-    },{
-      text: "co se děje?",
-      nextStep: "problem_explain",
+      text: "Jejda!",
+      nextStep: "discredit_2"
+    }, {
+      text: "Co se stalo?",
+      nextStep: "discredit_2"
     }]
-  }, 
+  },  
 
-  problem_explain: {
-    text: "nějaký fact checker se zmiňuje o tvém webu",
-    type: "webMessage",
+  discredit_2: {
+    text: "{siteName} je v hledáčku jednoho z takzvaných factcheckerů!",
+    type: "gameMessage",
     choices: [{
-      text: "to snad ne, ukažte mi to",
-      nextStep: "factchecker_post",
+      text: "A to má být kdo?",
+      nextStep: "discredit_3",
     }]
   },
 
-  factchecker_post: {
-    text: "Falešná zpráva. Tento web šíří dezinformace. Zpravodajský server iROZHLAS.cz pravdivost zprávy vyvrátil.",
+  discredit_3: {
+    text: "Factcheckeři jsou lidé nebo organizace, kteří se zaměřují na weby jako je ten náš a uvádí naše obratně zpracované informace na pravou míru.",
+    type: "gameMessage",
+    choices: [{
+      text: "Ach jo...",
+      nextStep: "discredit_4",
+    }]
+  },
+
+  discredit_4: {
+    text: "V tomhle případě jde dokonce o veřejnoprávní médium. Podíváme se, co o nás píšou?",
+    type: "gameMessage",
+    choices: [{
+      text: "Tak dobře.",
+      nextStep: "discredit_5",
+    }]
+  },
+
+  discredit_5: {
+    text: "Čech zveřejnil video „inscenovaného topení migrantů“ na Krétě. Ve skutečnosti šlo o natáčení dokumentu",
+    webName: "iROZHLAS",
+    type: "webPost",
+    choices: [{
+      text: "Pch!",
+      nextStep: "discredit_6",
+    }]
+  },
+
+  discredit_6: {
+    text: "S něčím takovým musíme občas počítat. Jak zareagujete?",
+    type: "gameMessage",
+    choices: [{
+      text: "Omluvím se.",
+      nextStep: "discredit_apology",
+    }, {
+      text: "Neudělám nic.",
+      nextStep: "discredit_nothing",
+    }, {
+      text: "Vrátím úder!",
+      nextStep: "discredit_revenge",
+    }]
+  },
+
+  discredit_revenge: {
+    text: "Naprosto správně! Útok můžeme vést dvěma cestami.",
+    type: "gameMessage",
+    choices: [{
+      text: "Popřu všechna nařčení.",
+      nextStep: "discredit_revenge_deny",
+    }, {
+      text: "Napadnu factcheckera.",
+      nextStep: "discredit_revenge_attack",
+    }]
+  },
+
+  discredit_apology: {
+    text: "Omlouváme se za nepravdivé informace v případě videa s inscenovaným topením migrantů. Na podobné politováníhodné chyby si budeme dávat pozor.",
+    username: "{siteName}",
     type: "socialPost",
     choices: [{
-      text: "hmmm",
-      nextStep: "problem_explain",
-    }]
-},
-
-  problem_explain: {
-    text: "jak budete reagovat?",
-    type: "webMessage",
-    choices: [{
-      text: "přiznám chybu a omluvím se",
-      nextStep: "factchecker_omluva",
-    },{
-      text: "nařčení popřu a zaútočím zpátky!",
-      nextStep: "factchecker_utok",
+      text: "V pořádku",
+      nextStep: "discredit_apology_2",
+    }, {
+      text: "Počkat, to ne!",
+      nextStep: "discredit_apology_takeback"
     }]
   },
 
-  factchecker_omluva: {
-    text: "Omluva? Nepřichází v úvahu! Nejlepší obrana je útok!",
-    type: "webMessage",
+  discredit_apology_takeback: {
+    text: "Dobře děláte! Na omluvy nejsou lidé zvědaví. Nejlepší obrana je útok. Můžete ho vést dvěma způsoby.",
+    type: "gameMessage",
     choices: [{
-      text: "zaútočit na fact checkery",
-      nextStep: "factchecker_utok",
+      text: "Popřu všechna nařčení.",
+      nextStep: "discredit_revenge_deny",
+    }, {
+      text: "Napadnu factcheckera.",
+      nextStep: "discredit_revenge_attack",
+    }]
+  },
+
+  discredit_apology_2: {
+    text: "Udělal jste chybu. Na omluvy nejsou vaši fanoušci zvědaví. Podívejte, jak reagují!",
+    type: "gameMessage",
+    choices: [{
+      text: "Co mi zbývá...",
+      nextStep: "discredit_apology_3",
+    }]
+  },
+
+  discredit_apology_3: {
+    text: "Takže doteď seriózní web {siteName} teď poklonkuje před lžimainstreamem? Ubozí slaboši!",
+    username: "Milada Mručivá",
+    type: "socialPost",
+    choices: [{
+      text: "Ajaj",
+      nextStep: "discredit_nothing_5",
+    }]
+  },
+
+  discredit_nothing: {
+    text: "Zkusíme to. Kdo nic nedělá, nic nezkazí, že?",
+    type: "gameMessage",
+    choices: [{
+      text: "Přesně!",
+      nextStep: "discredit_nothing_2",
+    }]
+  },
+
+  discredit_nothing_2: {
+    text: "No...",
+    type: "gameMessage",
+    choices: [{
+      text: "No?",
+      nextStep: "discredit_nothing_3",
+    }, {
+      text: "Co je?",
+      nextStep: "discredit_nothing_3",
+    }]
+  },
+
+  discredit_nothing_3: {
+    text: "Zas tak dobrý nápad to nebyl. Jako přiznání chyby to berou nejen factcheckeři, ale i vaši fanoušci.",
+    type: "gameMessage",
+    choices: [{
+      text: "Nevěřím!",
+      nextStep: "discredit_nothing_4",
+    }]
+  },
+
+  discredit_nothing_4: {
+    text: "Takže doteď seriózní {siteName} na sebe nechá kydat špínu? Velké zklamání!",
+    username: "Milada Mručivá",
+    type: "socialPost",
+    choices: [{
+      text: "Ajaj",
+      nextStep: "discredit_nothing_5",
+    }]
+  },
+
+  discredit_nothing_5: {
+    text: "Zbývá jediná možnost.",
+    type: "gameMessage",
+    choices: [{
+      text: "Omluva fanouškům?",
+      nextStep: "discredit_nothing_apology",
+    }, {
+      text: "Protiútok!",
+      nextStep: "discredit_nothing_revenge",
+    }]
+  },
+
+  discredit_nothing_apology: {
+    text: "Ne, ne, ne! Musíte přejít do protiútoku! Jinak přijdete o fanoušky definitivně.",
+    type: "gameMessage",
+    choices: [{
+      text: "No dobře.",
+      nextStep: "discredit_nothing_revenge",
+    }]
+  },
+
+  discredit_nothing_revenge: {
+    text: "No konečně. Zaútočit můžete dvěma způsoby.",
+    type: "gameMessage",
+    choices: [{
+      text: "Popřu všechna nařčení.",
+      nextStep: "discredit_revenge_deny",
+    }, {
+      text: "Napadnu factcheckera.",
+      nextStep: "discredit_revenge_attack",
+    }]
+  },
+
+  discredit_revenge_deny: {
+    text: "(zatím konec)",
+    type: "gameMessage",
+    choices: [{
+      text: "Popřu všechna nařčení.",
+      nextStep: "discredit_revenge_deny",
+    }]
+  },
+
+  discredit_revenge_attack: {
+    text: "(zatím konec)",
+    type: "gameMessage",
+    choices: [{
+      text: "Napadnu factcheckera.",
+      nextStep: "discredit_revenge_attack",
     }]
   },
 
