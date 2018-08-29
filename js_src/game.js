@@ -46,6 +46,19 @@ function GameMessage(props) {
     )
 }
 
+function GameIntro(props) {
+    return (
+      <div>
+      <div className="game-message">
+      {props.text}
+      </div>
+      <div className="game-instructions">
+      {props.instructions}
+      </div>
+      </div>
+    )
+}
+
 function Badge(props) {
     return (
       <div className="badge">
@@ -176,6 +189,8 @@ class Game extends React.Component {
       return <WebTitle title={step.text} claim={step.slogan} />
     } else if (step.type === "badge") {
       return <Badge text={step.text} />
+    } else if (step.type === "gameIntro") {
+      return <GameIntro text={step.text} instructions={step.instructions} />
     } else if (step.type === "webPost") {
       if (step.webName === "{siteName}") {
         step.webName = this.state.siteName;

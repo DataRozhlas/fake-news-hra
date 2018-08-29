@@ -24,6 +24,11 @@
   width: 100%;
 }
 
+.game-instructions {
+  font-style: italic;
+  font-size: medium;
+}
+
 .social-post {
   background: #d9eef5; 
   color: black;
@@ -41,6 +46,7 @@
 
 .web-title {
   background: #fed5d5;
+  text-align: center;
 }
 
 .web-title-claim {
@@ -114,6 +120,10 @@
   .game-event {
     min-height: 365px;
     font-size: 2rem;
+  }
+
+  .game-instructions {
+    font-size: 1.5rem;
   }
 
   .game-message, .social-post, .web-title, .web-post, .badge {

@@ -2,7 +2,8 @@ export const gameData = {
   // types: gameMessage, socialPost, webName, badge, webPost
   start: {
     text: "Rád vás poznávám.",
-    type: "gameMessage",
+    instructions: "(Vítejte v dezinformační hře serveru iROZHLAS.cz! V celkem pěti fázích se můžete vyzkoušet, jaké je to provozovat dezinformační web. Postupujte výběrem jedné z možností níže.)",
+    type: "gameIntro",
     choices: [{
       text: "Zdravím!",
       nextStep: "start2"
@@ -1281,7 +1282,7 @@ export const gameData = {
 
   polarization_select_1_corp_bots_fan4: {
     text: "Když mi to vyprávěla kamarádka, nevěřila jsem, a tady je to černé na bílém. To se budeme kvůli všemocným korporacím bát jíst ovoce?",
-    username: "Zuzana Líčivá - youtuberka",
+    username: "Zuzana Líčivá",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -1471,7 +1472,7 @@ export const gameData = {
 
   polarization_select_1_state_bots_fan4: {
     text: "Když mi to vyprávěla kamarádka, nevěřila jsem, a tady je to černé na bílém. To se budeme kvůli neschopným ministrům bát jíst ovoce?",
-    username: "Zuzana Líčivá - youtuberka",
+    username: "Zuzana Líčivá",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -1695,7 +1696,7 @@ export const gameData = {
 
   polarization_select_2_ngo_bots_fan4: {
     text: "Už mi kvůli tomu volal kamarád. Je to úplně šílené, okamžitě sebrat aktivistům peníze!",
-    username: "Zuzana Líčivá - youtuberka",
+    username: "Zuzana Líčivá",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -1885,7 +1886,7 @@ export const gameData = {
 
   polarization_select_2_gov_bots_fan4: {
     text: "Už mi kvůli tomu volal kamarád. Je to úplně šílené, musíme vyrazit demonstrovat!",
-    username: "Zuzana Líčivá - youtuberka",
+    username: "Zuzana Líčivá",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -2109,7 +2110,7 @@ export const gameData = {
 
   polarization_select_3_left_bots_fan4: {
     text: "Opravdu kousek od našich domovů stavíme ničivé továrny na jaderné exploze? Tahle civilizace se zlikviduje sama!",
-    username: "Zuzana Líčivá - youtuberka",
+    username: "Zuzana Líčivá",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -2299,7 +2300,7 @@ export const gameData = {
 
   polarization_select_3_right_bots_fan4: {
     text: "Opravdu necháváme naše politiky dohlížet na ničivé továrny na jaderné exploze? Tahle civilizace se zlikviduje sama!",
-    username: "Zuzana Líčivá - youtuberka",
+    username: "Zuzana Líčivá",
     type: "socialPost",
     choices: [{
       text: "Super!",
