@@ -3427,7 +3427,7 @@ export const gameData = {
   },
 
   trolling_push3_final5: {
-    text: "A tady hra končí. Díky za spolupráci, doufáme, že jste se bavili! Budeme rádi, když nám ještě odpovíte na dvě otázky.",
+    text: "A tady hra končí. Díky za spolupráci, doufáme, že jste se bavili! Budeme rádi, když nám ještě odpovíte na tři otázky.",
     type: "gameMessage",
     choices: [{
       text: "Klidně.",
@@ -3439,17 +3439,50 @@ export const gameData = {
   },
 
   survey1: {
-    text: "Kolik vám je let? atd.",
+    text: "Jste muž, nebo žena?",
     type: "gameMessage",
     choices: [{
-      text: "Konec hry",
+      text: "Muž",
+      nextStep: "survey2"
+    }, {
+      text: "Žena",
+      nextStep: "survey2"
+    }]
+  },
+
+  survey2: {
+    text: "Kolik vám je let?",
+    type: "gameMessage",
+    choices: [{
+      text: "Do 18 let",
+      nextStep: "survey3"
+    }, {
+      text: "18–35 let",
+      nextStep: "survey3"
+    }, {
+      text: "Přes 35 let",
+      nextStep: "survey3"
+    }]
+  },
+
+  survey3: {
+    text: "V jak velké obci žijete?",
+    type: "gameMessage",
+    choices: [{
+      text: "Pod 5 000 obyvatel",
+      nextStep: "finish"
+    }, {
+      text: "5 000–50 000 obyvatel",
+      nextStep: "finish"
+    }, {
+      text: "Nad 50 000 obyvatel",
       nextStep: "finish"
     }]
   },
 
   finish: {
-    text: "KONEC HRY! Stali jste se mistry zpravodajské manipulace a povedlo se vám nasbírat X sledujících. Tady bude finální skóre a sdílítka na FB a Twitter.",
-    type: "gameMessage",
+    text: "KONEC HRY! Stali jste se mistry zpravodajské manipulace a získali jste u toho {fanCount} fanoušků!",
+    type: "endGame",
     choices: []
   }
   

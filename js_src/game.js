@@ -86,7 +86,7 @@ function WebPost(props) {
 
 function ChoiceButton(props) {
   return (
-      <button className="choice-button" onClick={props.onClick}>
+      <button className={props.class} onClick={props.onClick}>
       {props.text}
       </button>
     )
@@ -98,11 +98,15 @@ class Game extends React.Component {
     this.state = {
       score: 0,
       trust: 0,
-      step: "start",
-      //step: "discredit_3",
+      //step: "start",
+      step: "trolling_push3_final4",
       history: [],
-      siteName: "Náhradní jméno webu",
-      penName: "Náhradní jméno autora"
+      isEvil: false,
+      siteName: "",
+      penName: "",
+      gender: "none",
+      age: "none",
+      townSize: "none",
     };
   }
 
@@ -118,6 +122,14 @@ class Game extends React.Component {
     } else if (choice.nextStep === "penName_chosen") {
       this.setState({
         penName: choice.text
+      })
+    } else if (stepText === "Jste muž, nebo žena?") {
+      this.setState({
+        gender: choice.text
+      })
+    } else if (stepText === "Kolik vám je let?") {
+      this.setState({
+        age: choice.text
       })
     }
 
@@ -154,13 +166,42 @@ class Game extends React.Component {
         step.webName = this.state.siteName;
       }
       return <WebPost webname={step.webName} text={step.text} />
-    } else { return }
+    } else if (step.type === "endGame") {
+      const text = step.text.replace("{fanCount}", this.state.score);
+      this.sendResults();
+      return <GameMessage text={text} />
+    }
+  }
+
+  sendResults() {
+    const uid = Date.now() + Math.floor(Math.random() * 10000);
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://hcthkkh1m9.execute-api.eu-central-1.amazonaws.com/prod');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var userInfo = JSON.parse(xhr.responseText);
+            console.log(userInfo);
+        }
+    };
+    xhr.send(JSON.stringify({
+        uid: uid,
+        gender: this.state.gender,
+        age: this.state.age,
+        townSize: this.state.townSize,
+        score: this.state.score,
+        evilness: this.state.isEvil
+    }));
   }
 
   render() {
     const step = gameData[this.state.step];
     const choices = step.choices.map((choice, index) => {
-      return <ChoiceButton key={index} text={choice.text} onClick={() => this.handleClick(choice, step.text)} />
+      if (step.choices.length < 3) {
+        return <ChoiceButton key={index} class="choice-button" text={choice.text} onClick={() => this.handleClick(choice, step.text)} />
+      } else {
+        return <ChoiceButton key={index} class="choice-button-3" text={choice.text} onClick={() => this.handleClick(choice, step.text)} />
+      }
     });
     const history = this.state.history.map((entry, entryNumber) => {
       return (
