@@ -114,7 +114,7 @@ class Game extends React.Component {
       score: 0,
       trust: 10,
       step: "start",
-      //step: "badge_discredit",
+      //step: "firstContent_choice1",
       history: [],
       siteName: "Náhradní jméno webu",
       penName: "Náhradní jméno autora"
