@@ -113,8 +113,8 @@ class Game extends React.Component {
     this.state = {
       score: 0,
       trust: 0,
-      step: "start",
-      //step: "trolling_push3_final4",
+      //step: "start",
+      step: "firstContent_choice1_attack_personal_react1",
       history: [],
       isEvil: false,
       siteName: "",
