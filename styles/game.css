@@ -1,27 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 .gameview {
   width: 100%;
-  background: black;
+  background: lightgrey;
   padding: 20px;
-  color: white;
-  font-size: 2rem;
-  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 25px;
 }
 
-.game-image {
-
-}
-
-.game-image-text {
-
-}
-
-.game-image-img {
-  width: 100%;
-}
-
-.game-message, .social-post {
-  padding-top: 20px;
-  padding-bottom: 20px;
+.game-message, .social-post, .web-title, .web-post, .badge {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .social-post {
@@ -77,20 +68,16 @@
 
 .choice-buttons {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .choice-button {
-  background-color: #555555;
+  background-color: lightgrey;
+  color: #1440dc;
   text-align: center;
-  color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 2rem;
-  padding: 15px 32px;
+  font-size: smaller;
   margin: auto;
-  margin-top: 10px;
 }
 
 .meters {
@@ -99,12 +86,32 @@
 }
 
 .score-meter, .trust-meter {
-  color: white;
   text-align: center;
-  font-size: initial;
 }
 
 .score-number, .trust-number {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: large;
+}
+
+.score-text, .trust-text {
+  font-size: small;
+}
+
+@media only screen and (min-width: 768px) {
+  .score-number, .trust-number {
+    font-size: 2rem;
+  }
+
+  .score-text, .trust-text {
+    font-size: medium;
+  }
+
+  .gameview {
+    font-size: 2rem;
+  }
+
+  .choice-button {
+    padding: 10px 20px;
+  }
 }

@@ -59,18 +59,6 @@ function Badge(props) {
     )
 }
 
-
-function Image(props) {
-    return (
-      <div className="game-image">
-        <img className="game-image-img" src={props.image} />
-        <div className="game-image-text">
-          {props.text}
-        </div>
-      </div>
-    )
-}
-
 function SocialPost(props) {
     return (
       <div className="social-post">
@@ -114,7 +102,7 @@ class Game extends React.Component {
       score: 0,
       trust: 10,
       step: "start",
-      //step: "firstContent_choice1",
+      //step: "trolling_pickTopic_1",
       history: [],
       siteName: "Náhradní jméno webu",
       penName: "Náhradní jméno autora"
@@ -169,8 +157,6 @@ class Game extends React.Component {
         step.webName = this.state.siteName;
       }
       return <WebPost webname={step.webName} text={step.text} />
-    } else if (step.type === "image") {
-      return <Image text={step.text} image={step.image} />
     } else { return }
   }
 

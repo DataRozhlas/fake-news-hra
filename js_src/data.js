@@ -13,7 +13,7 @@ export const gameData = {
   },
 
   start2: {
-    text: "Chcete si vydělat nějaké peníze šířením dezinformací?",
+    text: "Chcete se stát dezinformátorem, který hýbe veřejným děním?",
     type: "gameMessage",
     choices: [{
       text: "Proč ne?",
@@ -217,7 +217,7 @@ export const gameData = {
     text: "{siteName}! Správná volba. Pod jakým pseudonymem budete články publikovat, pane šéfredaktore?",
     type: "gameMessage",
     choices: [{
-      text: "Vedoucí cirkusu",
+      text: "Principál",
       nextStep: "penName_chosen",
     }, {
       text: "Pravdomluvka",
@@ -232,7 +232,7 @@ export const gameData = {
     text: "Nesmysl. Copak by vám čtenáři věřili, že přinášíte tajné informace, pokud byste se je nebáli zveřejňovat pod vlastním jménem? Vyberte si pseudonym.",
     type: "gameMessage",
     choices: [{
-      text: "Vedoucí cirkusu",
+      text: "Principál",
       nextStep: "penName_chosen",
     }, {
       text: "Pravdomluvka",
@@ -326,7 +326,7 @@ export const gameData = {
     text: "Vojáci v misích drží nebezpečí daleko od našich hranic",
     type: "webPost",
     choices: [{
-      text: "Tohle napadnu!",
+      text: "Tohle použiju!",
       nextStep: "firstContent_choice1_chosen",
     }, {
       text: "Vojáci? Pff...",
@@ -339,7 +339,7 @@ export const gameData = {
     text: "Zemi do konce století hrozí oteplení o více než dva stupně, varují vědci. Přijdou sucha i silné hurikány",
     type: "webPost",
     choices: [{
-      text: "Tohle napadnu!",
+      text: "Tohle použiju!",
       nextStep: "firstContent_choice2_chosen",
     }, {
       text: "To raději ty vojáky",
@@ -2550,7 +2550,7 @@ export const gameData = {
 
   discredit_revenge_deny_1_chosen_1: {
     text: "Veřejnoprávní média lživě útočí na {siteName}! My ale tenhle hon na čarodějnice z peněz daňových poplatníků dobře známe!",
-    username: "Martin Pokorný",
+    username: "Martin Procházka",
     type: "socialPost",
     choices: [{
       text: "Pěkné!",
@@ -2592,7 +2592,7 @@ export const gameData = {
 
   discredit_revenge_deny_2_chosen_1: {
     text: "V dnešní složité době má každý svou vlastní verzi událostí. V tom, jestli mají pravdu podplacená veřejnoprávní média, nebo {siteName}, mám ale jasno!",
-    username: "Martin Pokorný",
+    username: "Martin Procházka",
     type: "socialPost",
     choices: [{
       text: "Pěkné!",
@@ -2634,7 +2634,7 @@ export const gameData = {
 
   discredit_revenge_deny_3_chosen_1: {
     text: "Manipulátoři ovládají veřejnoprávní média! Budeme věřit jim, nebo nezávislému webu, který nemá důvod neříkat necenzurovanou pravdu?",
-    username: "Martin Pokorný",
+    username: "Martin Procházka",
     type: "socialPost",
     choices: [{
       text: "Pěkné!",
@@ -2704,7 +2704,7 @@ export const gameData = {
 
   discredit_revenge_attack_1_chosen_1: {
     text: "Na naše děti sbíráme víčka a veřejnoprávní pisálci si žijí jako prasata v žitě? Přispívejme radši na nezávislé projekty jako {siteName}!",
-    username: "Martin Pokorný",
+    username: "Martin Procházka",
     type: "socialPost",
     choices: [{
       text: "Pěkné!",
@@ -2746,7 +2746,7 @@ export const gameData = {
 
   discredit_revenge_attack_2_chosen_1: {
     text: "{siteName} přináší skandální odhalení otřesných pracovních podmínek ve veřejnoprávních médiích. Tam snad psát pravdu ani nejde!",
-    username: "Martin Pokorný",
+    username: "Martin Procházka",
     type: "socialPost",
     choices: [{
       text: "Pěkné!",
@@ -2788,7 +2788,7 @@ export const gameData = {
 
   discredit_revenge_attack_3_chosen_1: {
     text: "Jaká odhalení z veřejnoprávních temnot přijdou teď? Pedofilie? Kanibalismus? Rozhlas i televizi je nutné co nejdříve zestátnit!",
-    username: "Martin Pokorný",
+    username: "Martin Procházka",
     type: "socialPost",
     choices: [{
       text: "Pěkné!",
@@ -2881,8 +2881,18 @@ export const gameData = {
     text: "Prosím? Jste opravdu {penName}? Je tohle opravdu {siteName}? Neexistuje snad nic, co by vašim čtenářům bylo víc ukradené než Brno.",
     type: "gameMessage",
     choices: [{
-      text: "Fajn, beru kauzu s diamanty",
-      nextStep: "trolling_pickTopic_2_chosen",
+      text: "Pravda, chce to něco lepšího.",
+      nextStep: "trolling_pickTopic_2_onechoice",
+    }]
+  },
+
+  trolling_pickTopic_2_onechoice: {
+    text: "Tajná diamantová ložiska pod Milešovkou odhalena! Vláda je chce za pakatel prodat Egypťanům!",
+    webName: "{siteName}",
+    type: "webPost",
+    choices: [{
+      text: "Přesně to!",
+      nextStep: "trolling_pickTopic_2_chosen"
     }]
   },
 
