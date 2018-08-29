@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 .gameview {
   width: 100%;
-  background: lightgrey;
+  background: #f7f7f7;
   padding: 20px;
   color: black;
   font-family: 'Roboto', sans-serif;
@@ -16,7 +16,7 @@
 }
 
 .social-post {
-  background: lightblue; 
+  background: #d9eef5; 
   color: black;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .web-title {
-  background: red;
+  background: #fed5d5;
 }
 
 .web-title-name {
@@ -43,7 +43,7 @@
 }
 
 .web-post {
-  background: red;
+  background: #fed5d5;
 }
 
 .web-post-webname {
@@ -55,7 +55,7 @@
 }
 
 .badge {
-  background: blue;
+  background: #cdcded;
 }
 
 .badge-text {
@@ -72,7 +72,7 @@
 }
 
 .choice-button {
-  background-color: lightgrey;
+  background-color: #f7f7f7;
   color: #1440dc;
   text-align: center;
   border: none;

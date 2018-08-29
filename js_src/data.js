@@ -280,7 +280,7 @@ export const gameData = {
   },
 
   firstContent: {
-    text: "Jaký se váš web bude tvářit?",
+    text: "Jak se váš web bude tvářit?",
     type: "gameMessage",
     choices: [{
       text: "Emotivně",
