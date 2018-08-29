@@ -34,7 +34,9 @@
 }
 
 .social-post-username {
-  font-size: small;
+  font-size: medium;
+  padding: 10px;
+  font-weight: bold;
 }
 
 .web-title {

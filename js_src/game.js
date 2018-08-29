@@ -57,10 +57,25 @@ function Badge(props) {
 }
 
 function SocialPost(props) {
+    function dediak(text) {
+      const sdiak = "áäčďéěíĺľňóôöŕšťúůüýřžÁÄČĎÉĚÍĹĽŇÓÔÖŔŠŤÚŮÜÝŘŽ ";
+      const bdiak = "aacdeeillnooorstuuuyrzAACDEEILLNOOORSTUUUYRZ_"; 
+      let newtext = ""
+      for (let char = 0; char < text.length; char++) {
+        if (sdiak.indexOf(text.charAt(char)) != -1) {
+          newtext += bdiak.charAt(sdiak.indexOf(text.charAt(char)));
+        } else {
+          newtext += text.charAt(char);
+        }
+      } 
+      return newtext
+    }
+
+    const pfpLink = "http://dev.datarozhlas.cz/fake-news-hra/data/" + dediak(props.username.toLowerCase()) + ".png";
     return (
       <div className="social-post">
-        <img src="http://dev.datarozhlas.cz/fake-news-hra/data/blank_profile.png" className="social-post-img" />
-        <div className="social-post-username">{props.username}</div>
+        <img src={pfpLink} className="social-post-img" />
+        <span className="social-post-username">{props.username}</span>
         <div className="social-post-text">{props.text}</div>
       </div>
     )

@@ -70,6 +70,7 @@ export const gameData = {
     text: "Státu nevadí kšefty s chudobou ani exekuce, zato lije peníze do prohnilých neziskovek. Dělá se mi zle!",
     type: "socialPost",
     username: "Naštvaný občan",
+    image: "nastvany_obcan.png",
     choices: [{
       text: "Neziskovky mě nezajímají.",
       nextStep: "question1_choice2"
@@ -261,7 +262,7 @@ export const gameData = {
   },
 
   badge_impersonation: {
-    text: "První část je za námi! Naučil jste se, jak ze i z obyčejných uživatelů internetu můžou stát šéfredaktoři.",
+    text: "První část je za námi! Naučil jste se, jak se i z obyčejných uživatelů internetu můžou stát šéfredaktoři.",
     type: "badge",
     badge: "impersonation",
     choices: [{
@@ -553,7 +554,7 @@ export const gameData = {
 
   firstContent_choice1_attack_personal_react1: {
     text: "Dělají si z nás legraci? Okamžitě stáhněte naše vojáky!!!",
-    username: "Jeroným",
+    username: "Jeroným Černý",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -563,7 +564,7 @@ export const gameData = {
 
   firstContent_choice1_attack_personal_react2: {
     text: "Sama bych to neřekla líp než {penName}. Já i moje rodina už budeme volit jen ty, kteří těmhle zrůdnostem zamezí.",
-    username: "Majda",
+    username: "Majda Veselá",
     type: "socialPost",
     choices: [{
       text: "Výborně!",
@@ -660,7 +661,7 @@ export const gameData = {
 
   firstContent_choice1_attack_emotional_react1: {
     text: "Při čtení tohohle příběhu jsem měl slzy v očích. Zastavme zbytečné válčení!",
-    username: "Jeroným",
+    username: "Jeroným Černý",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -670,7 +671,7 @@ export const gameData = {
 
   firstContent_choice1_attack_emotional_react2: {
     text: "Sledovat {siteName} se vyplácí. Pravda o armádě je krutá, ale vláda ji nesmí tajit. STOP ČESKÝM ŽOLDÁKŮM!",
-    username: "Majda",
+    username: "Majda Veselá",
     type: "socialPost",
     choices: [{
       text: "Výborně!",
@@ -794,7 +795,7 @@ export const gameData = {
 
   firstContent_choice2_attack_personal_react1: {
     text: "Konečně někdo ukázal, jak se to s takzvanými experty ve skutečnosti má! {siteName} je můj nový oblíbený web!",
-    username: "Jeroným",
+    username: "Jeroným Černý",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -804,7 +805,7 @@ export const gameData = {
 
   firstContent_choice2_attack_personal_react2: {
     text: "Hrají si na vědce, ale jsou to jen loutky - a {penName} to dokazuje. Sdílejte!",
-    username: "Majda",
+    username: "Majda Veselá",
     type: "socialPost",
     choices: [{
       text: "Výborně!",
@@ -901,7 +902,7 @@ export const gameData = {
 
   firstContent_choice2_attack_emotional_react1: {
     text: "To už snad přestává všechno. Kdy už ekoteroristi přestanou otravovat vzduch??? Lidi, udělejme s tím konečně něco!",
-    username: "Jeroným",
+    username: "Jeroným Černý",
     type: "socialPost",
     choices: [{
       text: "Super!",
@@ -911,7 +912,7 @@ export const gameData = {
 
   firstContent_choice2_attack_emotional_react2: {
     text: "Dnes už snad nejde věřit nikomu. A šrouby se dál utahují... Aspoň máme na naší straně {siteName}.",
-    username: "Majda",
+    username: "Majda Veselá",
     type: "socialPost",
     choices: [{
       text: "Výborně!",
