@@ -8,11 +8,20 @@
   border-radius: 25px;
 }
 
+.game-event {
+  min-height: 50vh;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
 .game-message, .social-post, .web-title, .web-post, .badge {
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .social-post {
@@ -34,8 +43,7 @@
 
 .web-title-name {
   font-variant: small-caps;
-  font-size: x-large;
-  font-weight: bold;
+  font-size: 2rem;
 }
 
 .web-title-claim {
@@ -48,6 +56,7 @@
 
 .web-post-webname {
   font-weight: bold;
+  text-align: center;
 }
 
 .web-post-text {
@@ -62,13 +71,10 @@
 
 }
 
-.badge-bdg {
-
-}
-
 .choice-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .choice-button {
@@ -99,6 +105,11 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .game-event {
+    height: 365xpx;
+    font-size: 2rem;
+  }
+
   .score-number, .trust-number {
     font-size: 2rem;
   }
@@ -113,5 +124,9 @@
 
   .choice-button {
     padding: 10px 20px;
+  }
+
+  .web-title-name {
+    font-size: 3rem;
   }
 }

@@ -52,9 +52,6 @@ function Badge(props) {
         <div className="badge-text">
           {props.text}
         </div>
-        <div className="badge-bdg">
-          {props.badge}
-        </div>
       </div>
     )
 }
@@ -100,9 +97,9 @@ class Game extends React.Component {
     super(props);
     this.state = {
       score: 0,
-      trust: 10,
+      trust: 0,
       step: "start",
-      //step: "trolling_pickTopic_1",
+      //step: "discredit_3",
       history: [],
       siteName: "Náhradní jméno webu",
       penName: "Náhradní jméno autora"
@@ -151,7 +148,7 @@ class Game extends React.Component {
     } else if (step.type === "webName") {
       return <WebTitle title={step.text} claim={step.slogan} />
     } else if (step.type === "badge") {
-      return <Badge text={step.text} badge={step.badge} />
+      return <Badge text={step.text} />
     } else if (step.type === "webPost") {
       if (step.webName === "{siteName}") {
         step.webName = this.state.siteName;
@@ -180,7 +177,9 @@ class Game extends React.Component {
             <Score score={this.state.score} />
             <TrustScore trust={this.state.trust} />
           </div>
-          {this.renderStep(step)}
+          <div className="game-event">
+            {this.renderStep(step)}
+          </div>
           <div className="choice-buttons">
           {choices}
           </div>

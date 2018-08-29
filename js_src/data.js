@@ -241,7 +241,7 @@ export const gameData = {
   },
 
   penName_chosen: {
-    text: "Gratuluji, {penName}! Z běžného uživatele Facebooku jste se stal šéfredaktorem webu!",
+    text: "Gratuluji! Z běžného uživatele Facebooku jste se stal šéfredaktorem webu, který si říká {penName}!",
     type: "gameMessage",
     choices: [{
       text: "Hurá!",
@@ -2319,7 +2319,7 @@ export const gameData = {
     text: "Třetí část dokončena! Už chápete, jak snadno jde na internetu vyhrotit debatu o ožehavých tématech.",
     type: "badge",
     choices: [{
-      text: "Díky! Teď discredit",
+      text: "Pokračujeme!",
       nextStep: "discredit",
     }]
   },
@@ -2841,7 +2841,7 @@ export const gameData = {
     text: "Čtvrtá část zvládnuta! Diskreditovat oponenty zvládáte hravě.",
     type: "badge",
     choices: [{
-      text: "Jupí!",
+      text: "Pokračujeme!",
       nextStep: "trolling",
     }]
   },
