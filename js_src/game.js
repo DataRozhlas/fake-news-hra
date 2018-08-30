@@ -255,10 +255,6 @@ class Game extends React.Component {
           {choices}
           </div>
         </div>
-        <div className="history">
-        Záznam hry:
-        <ul>{history}</ul>
-        </div>
       </div>
     );
   }

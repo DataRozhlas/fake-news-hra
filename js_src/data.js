@@ -2,7 +2,7 @@ export const gameData = {
   // types: gameMessage, socialPost, webName, badge, webPost
   start: {
     text: "Rád vás poznávám.",
-    instructions: "(Vítejte v dezinformační hře serveru iROZHLAS.cz! V celkem pěti fázích se můžete vyzkoušet, jaké je to provozovat dezinformační web. Postupujte výběrem jedné z možností níže.)",
+    instructions: "(Vítejte v dezinformační hře, kterou připravil server iROZHLAS.cz! V celkem pěti fázích si můžete vyzkoušet, jaké je to provozovat dezinformační web. Postupujte výběrem jedné z možností níže.)",
     type: "gameIntro",
     choices: [{
       text: "Zdravím!",
