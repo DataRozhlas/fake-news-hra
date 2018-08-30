@@ -133,7 +133,8 @@ export const gameData = {
       nextStep: "goPro",
     }, {
       text: "Ale já nechci!",
-      nextStep: "feedback_unsure2"
+      nextStep: "feedback_unsure2",
+      good: true
     }]
   },
 
@@ -249,7 +250,7 @@ export const gameData = {
       text: "Hurá!",
       nextStep: "penName_chosen2",
       scoreChange: 30,
-      trustChange: 25
+      trustChange: 15
     }]
   },
 
@@ -398,7 +399,7 @@ export const gameData = {
     text: "Proč ne. Co si myslíte o změně klimatu?",
     type: "gameMessage",
     choices: [{
-      text: "Úplný nesmysl!",
+      text: "Je to podvrh!",
       nextStep: "firstContent_choice2_select",
     }, {
       text: "Je to vážný problém.",
@@ -994,7 +995,7 @@ export const gameData = {
     choices: [{
       text: "To by mohlo zabrat.",
       nextStep: "ban_done",
-      scoreChange: 267,
+      scoreChange: 243,
       trustChange: 15
     }]
   },
@@ -1134,7 +1135,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_1_corp_article_1_chosen",
-      scoreChange: 100
+      scoreChange: 126
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_1_corp_article_2"
@@ -1157,7 +1158,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_1_corp_article_2_chosen",
-      scoreChange: 200
+      scoreChange: 277
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_1_corp_article_3"
@@ -1180,7 +1181,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_1_corp_article_3_chosen",
-      scoreChange: 50
+      scoreChange: 62
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_1_corp_article_1"
@@ -1218,7 +1219,8 @@ export const gameData = {
       scoreChange: 6000
     }, {
       text: "Ale já nechci!",
-      nextStep: "polarization_select_1_corp_bots_nono"
+      nextStep: "polarization_select_1_corp_bots_nono",
+      good: true
     }]
   },
 
@@ -1286,7 +1288,9 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Super!",
-      nextStep: "polarization_select_1_corp_bots_end"
+      nextStep: "polarization_select_1_corp_bots_end",
+      scoreChange: 312,
+      trustChange: 16
     }]
   },
 
@@ -1324,7 +1328,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_1_state_article_1_chosen",
-      scoreChange: 100
+      scoreChange: 126
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_1_state_article_2"
@@ -1347,7 +1351,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_1_state_article_2_chosen",
-      scoreChange: 200
+      scoreChange: 277
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_1_state_article_3"
@@ -1370,7 +1374,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_1_state_article_3_chosen",
-      scoreChange: 50
+      scoreChange: 62
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_1_state_article_1"
@@ -1476,7 +1480,9 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Super!",
-      nextStep: "polarization_select_1_state_bots_end"
+      nextStep: "polarization_select_1_state_bots_end",
+      scoreChange: 312,
+      trustChange: 16
     }]
   },
 
@@ -1548,7 +1554,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_2_ngo_article_1_chosen",
-      scoreChange: 100
+      scoreChange: 168
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_2_ngo_article_2"
@@ -1571,7 +1577,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_2_ngo_article_2_chosen",
-      scoreChange: 200
+      scoreChange: 313
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_2_ngo_article_3"
@@ -1594,7 +1600,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_2_ngo_article_3_chosen",
-      scoreChange: 50
+      scoreChange: 99
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_2_ngo_article_1"
@@ -1700,7 +1706,9 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Super!",
-      nextStep: "polarization_select_2_ngo_bots_end"
+      nextStep: "polarization_select_2_ngo_bots_end",
+      scoreChange: 456,
+      trustChange: 16
     }]
   },
 
@@ -1738,7 +1746,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_2_gov_article_1_chosen",
-      scoreChange: 100
+      scoreChange: 168
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_2_gov_article_2"
@@ -1761,7 +1769,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_2_gov_article_2_chosen",
-      scoreChange: 200
+      scoreChange: 313
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_2_gov_article_3"
@@ -1784,7 +1792,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_2_gov_article_3_chosen",
-      scoreChange: 50
+      scoreChange: 99
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_2_gov_article_1"
@@ -1890,7 +1898,9 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Super!",
-      nextStep: "polarization_select_2_gov_bots_end"
+      nextStep: "polarization_select_2_gov_bots_end",
+      scoreChange: 456,
+      trustChange: 16
     }]
   },
 
@@ -1962,7 +1972,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_3_left_article_1_chosen",
-      scoreChange: 100
+      scoreChange: 93
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_3_left_article_2"
@@ -1985,7 +1995,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_3_left_article_2_chosen",
-      scoreChange: 200
+      scoreChange: 180
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_3_left_article_3"
@@ -2008,7 +2018,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_3_left_article_3_chosen",
-      scoreChange: 50
+      scoreChange: 27
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_3_left_article_1"
@@ -2114,7 +2124,9 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Super!",
-      nextStep: "polarization_select_3_left_bots_end"
+      nextStep: "polarization_select_3_left_bots_end",
+      scoreChange: 255,
+      trustChange: 16
     }]
   },
 
@@ -2152,7 +2164,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_3_right_article_1_chosen",
-      scoreChange: 100
+      scoreChange: 93
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_3_right_article_2"
@@ -2175,7 +2187,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_3_right_article_2_chosen",
-      scoreChange: 200
+      scoreChange: 180
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_3_right_article_3"
@@ -2198,7 +2210,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "polarization_select_3_right_article_3_chosen",
-      scoreChange: 50
+      scoreChange: 27
     }, {
       text: "Raději jinak.",
       nextStep: "polarization_select_3_right_article_1"
@@ -2304,7 +2316,9 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Super!",
-      nextStep: "polarization_select_3_right_bots_end"
+      nextStep: "polarization_select_3_right_bots_end",
+      scoreChange: 255,
+      trustChange: 16
     }]
   },
 
@@ -2327,7 +2341,7 @@ export const gameData = {
   },
 
   discredit: {
-    text: "Máme tu drobný problém.",
+    text: "{siteName} se slibně rozjíždí a chrlí jeden důležitý článek za druhým. Máme tu ale drobný problém.",
     type: "gameMessage",
     choices: [{
       text: "Jejda!",
@@ -2339,7 +2353,7 @@ export const gameData = {
   },  
 
   discredit_2: {
-    text: "{siteName} je v hledáčku jednoho z takzvaných factcheckerů!",
+    text: "Dostali jsme se do hledáčku jednoho z takzvaných factcheckerů!",
     type: "gameMessage",
     choices: [{
       text: "A to má být kdo?",
@@ -2372,6 +2386,8 @@ export const gameData = {
     choices: [{
       text: "Pch!",
       nextStep: "discredit_6",
+      scoreChange: -129,
+      trustChange: -10      
     }]
   },
 
@@ -2409,6 +2425,7 @@ export const gameData = {
     choices: [{
       text: "V pořádku",
       nextStep: "discredit_apology_2",
+      scoreChange: -452
     }, {
       text: "Počkat, to ne!",
       nextStep: "discredit_apology_takeback"
@@ -2443,6 +2460,7 @@ export const gameData = {
     choices: [{
       text: "Ajaj",
       nextStep: "discredit_nothing_5",
+      scoreChange: -116
     }]
   },
 
@@ -2461,9 +2479,11 @@ export const gameData = {
     choices: [{
       text: "No?",
       nextStep: "discredit_nothing_3",
+      scoreChange: -216,
     }, {
       text: "Co je?",
       nextStep: "discredit_nothing_3",
+      scoreChange: -216,
     }]
   },
 
@@ -2483,6 +2503,7 @@ export const gameData = {
     choices: [{
       text: "Ajaj",
       nextStep: "discredit_nothing_5",
+      scoreChange: -63
     }]
   },
 
@@ -2535,6 +2556,7 @@ export const gameData = {
     choices: [{
       text: "Do nich!",
       nextStep: "discredit_revenge_deny_1_chosen",
+      scoreChange: 87,
     },{
       text: "Něco dalšího?",
       nextStep: "discredit_revenge_deny_2",
@@ -2567,6 +2589,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "discredit_revenge_deny_response_1",
+      scoreChange: 146
     }]
   },
 
@@ -2577,6 +2600,7 @@ export const gameData = {
     choices: [{
       text: "Do nich!",
       nextStep: "discredit_revenge_deny_2_chosen",
+      scoreChange: 292
     },{
       text: "Něco dalšího?",
       nextStep: "discredit_revenge_deny_3",
@@ -2609,6 +2633,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "discredit_revenge_deny_response_1",
+      scoreChange: 146
     }]
   },
 
@@ -2619,6 +2644,7 @@ export const gameData = {
     choices: [{
       text: "Do nich!",
       nextStep: "discredit_revenge_deny_3_chosen",
+      scoreChange: 287
     },{
       text: "Něco dalšího?",
       nextStep: "discredit_revenge_deny_1",
@@ -2651,6 +2677,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "discredit_revenge_deny_response_1",
+      scoreChange: 146
     }]
   },  
 
@@ -2670,6 +2697,7 @@ export const gameData = {
     choices: [{
       text: "Výborně!",
       nextStep: "discredit_done",
+      trustChange: 14
     }]
   },
 
@@ -2689,6 +2717,7 @@ export const gameData = {
     choices: [{
       text: "Do nich!",
       nextStep: "discredit_revenge_attack_1_chosen",
+      scoreChange: 268
     },{
       text: "Něco dalšího?",
       nextStep: "discredit_revenge_attack_2",
@@ -2721,6 +2750,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "discredit_revenge_attack_response_1",
+      scoreChange: 146
     }]
   },
 
@@ -2731,6 +2761,7 @@ export const gameData = {
     choices: [{
       text: "Do nich!",
       nextStep: "discredit_revenge_attack_2_chosen",
+      scoreChange: 209
     },{
       text: "Něco dalšího?",
       nextStep: "discredit_revenge_attack_3",
@@ -2763,6 +2794,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "discredit_revenge_attack_response_1",
+      scoreChange: 146
     }]
   },
 
@@ -2773,6 +2805,7 @@ export const gameData = {
     choices: [{
       text: "Do nich!",
       nextStep: "discredit_revenge_attack_3_chosen",
+      scoreChange: 91
     },{
       text: "Něco dalšího?",
       nextStep: "discredit_revenge_attack_1",
@@ -2805,6 +2838,7 @@ export const gameData = {
     choices: [{
       text: "Ano!",
       nextStep: "discredit_revenge_attack_response_1",
+      scoreChange: 146
     }]
   },  
 
@@ -2824,6 +2858,7 @@ export const gameData = {
     choices: [{
       text: "Výborně!",
       nextStep: "discredit_done",
+      trustChange: 14
     }]
   },
 
@@ -2872,7 +2907,8 @@ export const gameData = {
     type: "webPost",
     choices: [{
       text: "To chci!",
-      nextStep: "trolling_pickTopic_1_chosen"
+      nextStep: "trolling_pickTopic_1_chosen",
+      scoreChange: -635
     }, {
       text: "Cože to?",
       nextStep: "trolling_pickTopic_2"
@@ -2929,7 +2965,8 @@ export const gameData = {
     type: "webPost",
     choices: [{
       text: "To chci!",
-      nextStep: "trolling_pickTopic_3_chosen"
+      nextStep: "trolling_pickTopic_3_chosen",
+      scoreChange: -337
     }, {
       text: "Cože to?",
       nextStep: "trolling_pickTopic_1",
@@ -2961,7 +2998,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Ale no tak!",
-      nextStep: "trolling_skeptic_reply2"
+      nextStep: "trolling_skeptic_reply2",
+      scoreChange: -215
     }]
   },
 
@@ -2971,7 +3009,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Jejda...",
-      nextStep: "trolling_skeptic_whatnow"
+      nextStep: "trolling_skeptic_whatnow",
+      scoreChange: -166
     }]
   },
 
@@ -2983,7 +3022,8 @@ export const gameData = {
       nextStep: "trolling_doubt_1"
     }, {
       text: "To nechci...",
-      nextStep: "trolling_skeptic_resist"
+      nextStep: "trolling_skeptic_resist",
+      good: true
     }]
   },
 
@@ -3006,6 +3046,7 @@ export const gameData = {
     }, {
       text: "Beru!",
       nextStep: "trolling_doubt_1_chosen",
+      scoreChange: 677
     }]
   },
 
@@ -3034,7 +3075,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Určitě.",
-      nextStep: "trolling_doubt_1_success"
+      nextStep: "trolling_doubt_1_success",
+      scoreChange: 414
     }]
   },
 
@@ -3057,6 +3099,7 @@ export const gameData = {
     }, {
       text: "Beru!",
       nextStep: "trolling_doubt_2_chosen",
+      scoreChange: 888
     }]
   },
 
@@ -3085,7 +3128,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Určitě.",
-      nextStep: "trolling_doubt_2_success"
+      nextStep: "trolling_doubt_2_success",
+      scoreChange: 414
     }]
   },
 
@@ -3108,6 +3152,7 @@ export const gameData = {
     }, {
       text: "Beru!",
       nextStep: "trolling_doubt_3_chosen",
+      scoreChange: -17
     }]
   },
 
@@ -3136,7 +3181,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "Určitě.",
-      nextStep: "trolling_doubt_3_success"
+      nextStep: "trolling_doubt_3_success",
+      scoreChange: 414
     }]
   },
 
@@ -3165,7 +3211,9 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "To rozhodně!",
-      nextStep: "trolling_push1"
+      nextStep: "trolling_push1",
+      scoreChange: 1313,
+      trustChange: 5
     }]
   },
 
@@ -3196,7 +3244,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "To jde.",
-      nextStep: "trolling_push1_mainstream1"
+      nextStep: "trolling_push1_mainstream1",
+      scoreChange: 825
     }, {
       text: "Dál!",
       nextStep: "trolling_push1_evidence_2"
@@ -3209,7 +3258,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "To jde.",
-      nextStep: "trolling_push1_mainstream1"
+      nextStep: "trolling_push1_mainstream1",
+      scoreChange: 818
     }, {
       text: "Dál!",
       nextStep: "trolling_push1_evidence_1"
@@ -3231,7 +3281,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "To jde.",
-      nextStep: "trolling_push1_mainstream1"
+      nextStep: "trolling_push1_mainstream1",
+      scoreChange: 807
     }, {
       text: "Dál!",
       nextStep: "trolling_push1_witness_2"
@@ -3244,7 +3295,8 @@ export const gameData = {
     type: "socialPost",
     choices: [{
       text: "To jde.",
-      nextStep: "trolling_push1_mainstream1"
+      nextStep: "trolling_push1_mainstream1",
+      scoreChange: 798
     }, {
       text: "Dál!",
       nextStep: "trolling_push1_witness_1"
@@ -3266,7 +3318,9 @@ export const gameData = {
     type: "webPost",
     choices: [{
       text: "Aby ne!",
-      nextStep: "trolling_push2"
+      nextStep: "trolling_push2",
+      scoreChange: 1313,
+      trustChange: 7
     }]
   },
 
@@ -3335,7 +3389,9 @@ export const gameData = {
     type: "gameMessage",
     choices: [{
       text: "Ovce!",
-      nextStep: "trolling_push2_mainstream2"
+      nextStep: "trolling_push2_mainstream2",
+      scoreChange: 1736,
+      trustChange: 4
     }]
   },
 
@@ -3407,6 +3463,8 @@ export const gameData = {
     choices: [{
       text: "Neskutečné!",
       nextStep: "trolling_push3_final3",
+      scoreChange: 2327,
+      trustChange: 4
     }]
   },
 
@@ -3485,7 +3543,7 @@ export const gameData = {
   finish: {
     text: "KONEC HRY! Stali jste se mistry zpravodajské manipulace a získali jste u toho {fanCount} fanoušků!",
     type: "endGame",
-    choices: []
+    choices: [{text: "Sdílet na Facebooku"}, {text: "Sdílet na Twitteru"}]
   }
   
 }

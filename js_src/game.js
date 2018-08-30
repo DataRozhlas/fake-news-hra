@@ -7,7 +7,7 @@ function Score(props) {
   return (
       <div className="score-meter">
         <div className="score-number">
-          <CountUp end={props.score} />
+          <CountUp start={props.oldScore} end={props.score} />
         </div>
         <div className="score-text">
         Sledujících
@@ -17,13 +17,8 @@ function Score(props) {
 }
 
 function TrustScore(props) {
-  // to avoid passing an init prop, we just check if init value is the initial one
   function getTrust(trust) {
-    if (trust === 10) {
-      return 10
-    } else {
-      return <CountUp end={props.trust} />
-    }
+    return <CountUp start={props.oldTrust} end={props.trust} />
   }
 
   return (
@@ -124,12 +119,13 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      oldScore: 0,
       score: 0,
       trust: 0,
+      oldTrust: 0,
       step: "start",
-      //step: "ban_fear",
       history: [],
-      isEvil: false,
+      isEvil: true,
       siteName: "Český Maják",
       penName: "",
       gender: "none",
@@ -139,6 +135,16 @@ class Game extends React.Component {
   }
 
   handleClick(choice, stepText) {
+    if (choice.text === "Sdílet na Facebooku") {
+        const sdileciURL = "https://www.facebook.com/sharer/sharer.php?u="+window.location.href;
+        window.open(sdileciURL,'test','left=20,top=20,width=550,height=650,toolbar=0,resizable=0,menubar=0');
+        return
+    } else if (choice.text === "Sdílet na Twitteru") {
+      const sdileciURL = "https://twitter.com/intent/tweet?text=Stal%20jsem%20se%20mistrem%20dezinformac%C3%AD!%20Vyzkou%C5%A1ejte%20si%20roli%20%C5%A1%C3%A9fredaktora%20webu%20s%20fale%C5%A1n%C3%BDmi%20zpr%C3%A1vami%20ve%20h%C5%99e%20serveru%20iROZHLAS.cz%3A&url=" + window.location.href;
+      window.open(sdileciURL,'test','left=20,top=20,width=550,height=250,toolbar=0,resizable=0,menubar=0');
+      return
+    }
+
     const newScore = choice.scoreChange ? choice.scoreChange + this.state.score : this.state.score;
     const newTrust = choice.trustChange ? choice.trustChange + this.state.trust : this.state.trust;
     const newHistory = this.state.history.concat([stepText]);
@@ -161,9 +167,17 @@ class Game extends React.Component {
       })
     }
 
+    if (choice.good === true) {
+      this.setState({
+        isEvil: false
+      })
+    }
+
     this.setState({
       step: choice.nextStep,
+      oldScore: this.state.score,
       score: newScore,
+      oldTrust: this.state.trust,
       trust: newTrust,
       history: newHistory
     })
@@ -245,8 +259,8 @@ class Game extends React.Component {
       <div>
         <div className="gameview">
           <div className="meters">
-            <Score score={this.state.score} />
-            <TrustScore trust={this.state.trust} />
+            <Score score={this.state.score} oldScore={this.state.oldScore} />
+            <TrustScore trust={this.state.trust} oldTrust={this.state.oldTrust} />
           </div>
           <div className="game-event">
             {this.renderStep(step)}
