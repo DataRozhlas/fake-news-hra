@@ -165,6 +165,10 @@ class Game extends React.Component {
       this.setState({
         age: choice.text
       })
+    } else if (stepText === "V jak velké obci žijete?") {
+      this.setState({
+        townSize: choice.text
+      })
     }
 
     if (choice.good === true) {
@@ -225,7 +229,6 @@ class Game extends React.Component {
     xhr.onload = function() {
         if (xhr.status === 200) {
             var userInfo = JSON.parse(xhr.responseText);
-            console.log(userInfo);
         }
     };
     xhr.send(JSON.stringify({

@@ -7,5 +7,5 @@ styles: []
 libraries: []
 options: [noheader, nopic] #wide, noheader (, nopic)
 ---
-<div id="game"></div>
+<div id="game" class="embed"></div>
 Hra je inspirována zahraničním projektem <a href="https://www.getbadnews.com/">Get Bad News</a>. Vznikla k příležitosti <a href="https://www.facebook.com/events/1690636711034802/">debaty Českého rozhlasu</a> o takzvaných fake news, která se koná ve středu 5. září. Od 18:30 ji bude Český rozhlas Plus přenášet živě.
