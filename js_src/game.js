@@ -79,7 +79,7 @@ function SocialPost(props) {
       return newtext
     }
 
-    const pfpLink = "http://dev.datarozhlas.cz/fake-news-hra/data/" + dediak(props.username.toLowerCase()) + ".png";
+    const pfpLink = "https://data.irozhlas.cz/fake-news-hra/data/" + dediak(props.username.toLowerCase()) + ".png";
     return (
       <div className="social-post">
         <img src={pfpLink} className="social-post-img" />
